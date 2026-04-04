@@ -32,7 +32,13 @@ export default function Dashboard() {
   const fetchNotes = async () => {
     try {
       const res = await api.get('/notes');
-      setNotes(res.data);
+      const responseData = res.data;
+      const nextNotes = Array.isArray(responseData)
+        ? responseData
+        : Array.isArray(responseData?.notes)
+          ? responseData.notes
+          : [];
+      setNotes(nextNotes);
     } catch (err) {
       toast.error('Failed to load notes');
     } finally {
