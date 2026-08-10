@@ -48,13 +48,17 @@ export default function Signup() {
   };
 
   return (
-    <div className="relative min-h-screen w-full overflow-hidden bg-gradient-to-br from-surface-100 via-white to-primary-100 dark:from-surface-950 dark:via-surface-900 dark:to-primary-900">
+    <div className="relative min-h-screen w-full overflow-hidden auth-bg bg-surface-50 dark:bg-surface-950">
 
       {/* Decorative background shapes */}
-      <div className="pointer-events-none absolute -top-24 -right-16 h-72 w-72 rounded-full bg-primary-200/60 blur-3xl dark:bg-primary-500/20" />
-      <div className="pointer-events-none absolute -bottom-28 -left-20 h-80 w-80 rounded-full bg-sky-200/60 blur-3xl dark:bg-primary-700/20" />
-      <div className="pointer-events-none absolute top-1/2 right-8 h-28 w-28 -translate-y-1/2 rounded-3xl -rotate-12 border border-primary-200/60 bg-white/60 backdrop-blur-sm dark:border-primary-400/20 dark:bg-surface-900/40" />
-      <div className="pointer-events-none absolute top-24 left-12 h-20 w-20 rotate-6 rounded-2xl border border-primary-200/60 bg-white/70 backdrop-blur-sm dark:border-primary-400/20 dark:bg-surface-900/40" />
+      <div className="pointer-events-none absolute -top-24 -right-16 h-72 w-72 rounded-full bg-primary-200/60 blur-3xl dark:bg-purple-500/20" />
+      <div className="pointer-events-none absolute -bottom-28 -left-20 h-80 w-80 rounded-full bg-sky-200/60 blur-3xl dark:bg-purple-700/15" />
+      <div className="pointer-events-none absolute top-1/2 right-8 h-28 w-28 -translate-y-1/2 rounded-3xl -rotate-12 border border-primary-200/60 bg-white/60 backdrop-blur-sm dark:border-purple-500/15 dark:bg-[rgba(15,15,18,0.3)]" />
+      <div className="pointer-events-none absolute top-24 left-12 h-20 w-20 rotate-6 rounded-2xl border border-primary-200/60 bg-white/70 backdrop-blur-sm dark:border-purple-500/15 dark:bg-[rgba(15,15,18,0.3)]" />
+
+      {/* Ambient orbs */}
+      <div className="ambient-orb absolute w-96 h-96 bg-purple-500/10 top-1/4 -left-48" />
+      <div className="ambient-orb absolute w-80 h-80 bg-fuchsia-500/8 bottom-1/4 -right-40" style={{ animationDelay: '-10s' }} />
 
       <div className="relative z-10 flex min-h-screen w-full items-center justify-center px-4 py-8 sm:px-6 lg:px-8">
         <motion.div
@@ -65,15 +69,15 @@ export default function Signup() {
         >
         {/* Logo + Branding */}
         <div className="text-center mb-8">
-          <div className="mb-4 inline-flex h-14 w-14 items-center justify-center rounded-2xl bg-gradient-to-br from-primary-500 to-primary-700 shadow-lg shadow-primary-500/30">
+          <div className="mb-4 inline-flex h-14 w-14 items-center justify-center rounded-2xl bg-gradient-to-br from-purple-500 via-violet-600 to-purple-800 shadow-lg shadow-purple-500/40">
             <Cloud size={30} className="text-white" />
           </div>
-          <h1 className="mb-1 text-3xl font-extrabold text-surface-900 dark:text-surface-100">CloudVault</h1>
+          <h1 className="mb-1 text-3xl font-extrabold text-surface-900 text-gradient-purple">CloudVault</h1>
           <p className="text-sm text-surface-600 dark:text-surface-400">Start your journey today.</p>
         </div>
 
         {/* Form Card */}
-        <div className="rounded-3xl border border-surface-200/80 bg-white/95 p-8 sm:p-10 shadow-2xl shadow-surface-900/10 backdrop-blur dark:border-surface-700/60 dark:bg-surface-900/90 dark:shadow-black/30">
+        <div className="glass-card rounded-3xl border border-surface-200/80 bg-white/95 p-8 sm:p-10 shadow-2xl shadow-surface-900/10 backdrop-blur-xl dark:bg-[rgba(15,15,18,0.7)] dark:border-[rgba(168,85,247,0.15)] dark:shadow-purple-500/5">
 
           <h2 className="text-xl font-bold text-surface-900 dark:text-surface-100 mb-1 text-center">
             Create an account
@@ -99,7 +103,7 @@ export default function Signup() {
                   border-2 border-surface-200 dark:border-surface-700/50
                   text-surface-900 dark:text-surface-100
                   placeholder:text-surface-400 dark:placeholder:text-surface-500
-                  focus:outline-none focus:ring-4 focus:ring-primary-500/15 focus:border-primary-500
+                  focus:outline-none focus:ring-4 focus:ring-purple-500/20 focus:border-purple-500
                   transition-all duration-200"
               />
             </div>
@@ -120,7 +124,7 @@ export default function Signup() {
                   border-2 border-surface-200 dark:border-surface-700/50
                   text-surface-900 dark:text-surface-100
                   placeholder:text-surface-400 dark:placeholder:text-surface-500
-                  focus:outline-none focus:ring-4 focus:ring-primary-500/15 focus:border-primary-500
+                  focus:outline-none focus:ring-4 focus:ring-purple-500/20 focus:border-purple-500
                   transition-all duration-200"
               />
             </div>
@@ -142,7 +146,7 @@ export default function Signup() {
                     border-2 border-surface-200 dark:border-surface-700/50
                     text-surface-900 dark:text-surface-100
                     placeholder:text-surface-400 dark:placeholder:text-surface-500
-                    focus:outline-none focus:ring-4 focus:ring-primary-500/15 focus:border-primary-500
+                    focus:outline-none focus:ring-4 focus:ring-purple-500/20 focus:border-purple-500
                     transition-all duration-200"
                 />
                 <button
@@ -173,7 +177,7 @@ export default function Signup() {
                     border-2 border-surface-200 dark:border-surface-700/50
                     text-surface-900 dark:text-surface-100
                     placeholder:text-surface-400 dark:placeholder:text-surface-500
-                    focus:outline-none focus:ring-4 focus:ring-primary-500/15 focus:border-primary-500
+                    focus:outline-none focus:ring-4 focus:ring-purple-500/20 focus:border-purple-500
                     transition-all duration-200"
                 />
                 <button
@@ -192,10 +196,7 @@ export default function Signup() {
               id="signup-submit"
               type="submit"
               disabled={loading}
-              className="mt-2 w-full min-h-12 rounded-xl px-5 py-3.5 text-sm font-bold text-white tracking-wide
-                bg-gradient-to-r from-primary-500 to-primary-600
-                hover:from-primary-600 hover:to-primary-700
-                shadow-lg shadow-primary-500/30 hover:shadow-primary-500/50
+              className="btn-purple-glow mt-2 w-full min-h-12 rounded-xl px-5 py-3.5 text-sm font-bold text-white tracking-wide
                 disabled:opacity-50 disabled:cursor-not-allowed
                 transform hover:-translate-y-0.5 active:translate-y-0
                 transition-all duration-200 cursor-pointer
@@ -210,7 +211,7 @@ export default function Signup() {
         {/* Bottom link */}
         <p className="mt-6 text-center text-sm text-surface-600 dark:text-surface-400">
           Already have an account?{' '}
-          <Link to="/login" className="font-bold text-primary-600 hover:underline transition-colors dark:text-primary-400">
+          <Link to="/login" className="font-bold text-purple-400 hover:text-purple-300 transition-colors">
             Sign in
           </Link>
         </p>

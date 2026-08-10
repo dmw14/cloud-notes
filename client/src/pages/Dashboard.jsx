@@ -151,11 +151,11 @@ export default function Dashboard() {
       {/* Header */}
       <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 mb-8">
         <div>
-          <h1 className="text-2xl font-bold text-surface-900 dark:text-surface-100">
-            My Notes
+          <h1 className="text-2xl font-bold text-gradient-purple">
+            My Vault
           </h1>
-          <p className="text-sm text-surface-500 dark:text-surface-400 mt-0.5">
-            {notes.length} {notes.length === 1 ? 'note' : 'notes'} total
+          <p className="text-sm text-surface-500 dark:text-purple-300/60 mt-0.5">
+            {notes.length} {notes.length === 1 ? 'item' : 'items'} total
             {searchQuery && ` · ${filteredNotes.length} matching`}
           </p>
         </div>
@@ -165,15 +165,12 @@ export default function Dashboard() {
           <button
             id="create-note"
             onClick={openCreate}
-            className="flex min-h-11 items-center gap-2 rounded-xl px-5 py-2.5 text-sm font-semibold text-white
-              bg-gradient-to-r from-primary-500 to-primary-600
-              hover:from-primary-600 hover:to-primary-700
-              shadow-lg shadow-primary-500/25 hover:shadow-primary-500/40
+            className="btn-purple-glow flex min-h-11 items-center gap-2 rounded-xl px-5 py-2.5 text-sm font-semibold text-white
               transform hover:-translate-y-0.5
               transition-all duration-200 cursor-pointer whitespace-nowrap flex-shrink-0"
           >
             <Plus size={16} />
-            New Note
+            New Item
           </button>
         </div>
       </div>
@@ -189,8 +186,8 @@ export default function Dashboard() {
           animate={{ opacity: 1 }}
           className="text-center py-16"
         >
-          <p className="text-surface-500 dark:text-surface-400 text-lg font-medium mb-1">
-            No notes found
+          <p className="text-surface-500 dark:text-purple-300/50 text-lg font-medium mb-1">
+            No items found
           </p>
           <p className="text-surface-400 dark:text-surface-500 text-sm">
             Try searching with different keywords

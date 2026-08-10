@@ -17,14 +17,18 @@ export default function App() {
           duration: 3000,
           className: 'toast-custom',
           style: {
-            borderRadius: '12px',
+            borderRadius: '16px',
             padding: '12px 16px',
             fontSize: '14px',
             fontWeight: '500',
+            background: 'rgba(15, 15, 18, 0.9)',
+            border: '1px solid rgba(168, 85, 247, 0.12)',
+            color: '#e4e4e7',
+            backdropFilter: 'blur(12px)',
           },
           success: {
             iconTheme: {
-              primary: '#6366f1',
+              primary: '#a855f7',
               secondary: '#fff',
             },
           },

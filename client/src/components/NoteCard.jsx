@@ -48,10 +48,10 @@ export default function NoteCard({ note, index, onEdit, onShare, onDelete }) {
       exit={{ opacity: 0, y: -10, scale: 0.95 }}
       transition={{ duration: 0.3, delay: index * 0.05 }}
       className="group relative rounded-2xl p-5 border cursor-pointer
-        bg-white dark:bg-surface-800/40
-        border-surface-200 dark:border-surface-700/50
-        hover:border-primary-300 dark:hover:border-primary-500/30
-        hover:shadow-lg hover:shadow-primary-500/5 dark:hover:shadow-primary-500/10
+        bg-white dark:bg-[rgba(15,15,18,0.5)]
+        border-surface-200 dark:border-[rgba(168,85,247,0.1)]
+        hover:border-primary-300 dark:hover:border-[rgba(168,85,247,0.25)]
+        hover:shadow-lg hover:shadow-primary-500/5 dark:hover:shadow-[0_0_30px_rgba(168,85,247,0.08)]
         transform hover:-translate-y-1
         transition-all duration-300"
       onClick={() => onEdit(note)}
@@ -59,14 +59,14 @@ export default function NoteCard({ note, index, onEdit, onShare, onDelete }) {
       {/* Subtle gradient accent on hover */}
       <div className="absolute inset-0 rounded-2xl opacity-0 group-hover:opacity-100
         bg-gradient-to-br from-primary-500/[0.02] to-transparent
-        dark:from-primary-500/[0.05] dark:to-transparent
+        dark:from-purple-500/[0.06] dark:to-transparent
         transition-opacity duration-300 pointer-events-none" />
 
       {/* Public badge */}
       {note.isPublic && (
         <div className="absolute top-3 right-12">
           <span className="inline-flex items-center gap-1 px-2 py-0.5 rounded-full text-[11px] font-semibold
-            bg-emerald-100 text-emerald-700 dark:bg-emerald-500/20 dark:text-emerald-400">
+            bg-emerald-100 text-emerald-700 dark:bg-emerald-500/15 dark:text-emerald-400">
             <span className="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-pulse" />
             Shared
           </span>
@@ -81,7 +81,7 @@ export default function NoteCard({ note, index, onEdit, onShare, onDelete }) {
           onClick={() => setMenuOpen((prev) => !prev)}
           className="w-9 h-9 flex items-center justify-center rounded-xl
             text-surface-400 hover:text-surface-700 dark:hover:text-surface-200
-            hover:bg-surface-100 dark:hover:bg-surface-700/50
+            hover:bg-surface-100 dark:hover:bg-[rgba(168,85,247,0.1)]
             transition-colors duration-150 cursor-pointer"
           title="Options"
         >
@@ -97,9 +97,9 @@ export default function NoteCard({ note, index, onEdit, onShare, onDelete }) {
               exit={{ opacity: 0, scale: 0.9, y: -4 }}
               transition={{ duration: 0.15 }}
               className="absolute right-0 top-full mt-1 w-44 py-1.5 rounded-xl
-                bg-white dark:bg-surface-800
-                border border-surface-200 dark:border-surface-700
-                shadow-xl shadow-black/10 dark:shadow-black/30
+                bg-white dark:bg-[rgba(15,15,18,0.9)]
+                border border-surface-200 dark:border-[rgba(168,85,247,0.15)]
+                shadow-xl shadow-purple-500/5 dark:shadow-purple-500/10
                 z-50"
             >
               <button
@@ -108,7 +108,7 @@ export default function NoteCard({ note, index, onEdit, onShare, onDelete }) {
                 className="w-full flex items-center gap-3 px-4 py-2.5 text-sm font-medium
                   text-surface-700 dark:text-surface-200
                   hover:bg-primary-50 hover:text-primary-600
-                  dark:hover:bg-primary-500/15 dark:hover:text-primary-400
+                  dark:hover:bg-purple-500/15 dark:hover:text-purple-400
                   transition-colors duration-150 cursor-pointer"
               >
                 <Edit3 size={18} />
@@ -119,14 +119,14 @@ export default function NoteCard({ note, index, onEdit, onShare, onDelete }) {
                 onClick={() => { onShare(note); setMenuOpen(false); }}
                 className="w-full flex items-center gap-3 px-4 py-2.5 text-sm font-medium
                   text-surface-700 dark:text-surface-200
-                  hover:bg-blue-50 hover:text-blue-600
-                  dark:hover:bg-blue-500/15 dark:hover:text-blue-400
+                  hover:bg-purple-50 hover:text-purple-600
+                  dark:hover:bg-purple-500/15 dark:hover:text-purple-400
                   transition-colors duration-150 cursor-pointer"
               >
                 <Share2 size={18} />
                 Share
               </button>
-              <div className="my-1 mx-3 border-t border-surface-100 dark:border-surface-700" />
+              <div className="my-1 mx-3 border-t border-surface-100 dark:border-[rgba(168,85,247,0.08)]" />
               <button
                 id={`delete-note-${note._id}`}
                 onClick={() => { onDelete(note); setMenuOpen(false); }}
@@ -184,7 +184,7 @@ export default function NoteCard({ note, index, onEdit, onShare, onDelete }) {
 
       {/* Footer */}
       <div className="flex items-center justify-between pt-3 border-t
-        border-surface-100 dark:border-surface-700/50">
+        border-surface-100 dark:border-[rgba(168,85,247,0.08)]">
         <div className="flex items-center gap-3">
           <div className="flex items-center gap-1.5 text-xs text-surface-400 dark:text-surface-500">
             <Calendar size={12} />

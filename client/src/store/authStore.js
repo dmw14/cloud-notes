@@ -14,10 +14,11 @@ const useAuthStore = create((set) => ({
       _id: data._id,
       name: data.name,
       email: data.email,
+      createdAt: data.createdAt,
     }));
     set({
       token: data.token,
-      user: { _id: data._id, name: data.name, email: data.email },
+      user: { _id: data._id, name: data.name, email: data.email, createdAt: data.createdAt },
     });
   },
 

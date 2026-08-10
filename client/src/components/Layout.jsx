@@ -4,12 +4,29 @@ import { Cloud, LogOut, User, Settings, ChevronDown } from 'lucide-react';
 import { motion, AnimatePresence } from 'framer-motion';
 import useAuthStore from '../store/authStore';
 import ThemeToggle from './ThemeToggle';
+import ProfileModal from './ProfileModal';
+import SettingsModal from './SettingsModal';
+import api from '../api/axios';
 
 export default function Layout() {
   const { user, logout } = useAuthStore();
   const navigate = useNavigate();
   const [menuOpen, setMenuOpen] = useState(false);
+  const [profileOpen, setProfileOpen] = useState(false);
+  const [settingsOpen, setSettingsOpen] = useState(false);
+  const [itemCount, setItemCount] = useState(0);
   const menuRef = useRef(null);
+
+  // Fetch item count for profile
+  useEffect(() => {
+    api.get('/notes')
+      .then((res) => {
+        const data = res.data;
+        const items = Array.isArray(data) ? data : Array.isArray(data?.notes) ? data.notes : [];
+        setItemCount(items.length);
+      })
+      .catch(() => {});
+  }, []);
 
   const handleLogout = () => {
     logout();
@@ -34,9 +51,9 @@ export default function Layout() {
   return (
     <div className="min-h-screen flex flex-col bg-surface-50 dark:bg-surface-950 transition-colors duration-300">
       {/* Top Navigation */}
-      <header className="sticky top-0 z-40 backdrop-blur-xl
-        bg-white/80 dark:bg-surface-900/80
-        border-b border-surface-200 dark:border-surface-800">
+      <header className="sticky top-0 z-40 backdrop-blur-xl glass-surface
+        bg-white/80 dark:bg-[rgba(15,15,18,0.7)]
+        border-b border-surface-200 dark:border-[rgba(168,85,247,0.1)]">
         <div className="w-full px-4 sm:px-6 lg:px-10 xl:px-14">
           <div className="flex items-center justify-between h-16">
             {/* Logo */}
@@ -44,13 +61,13 @@ export default function Layout() {
               onClick={() => navigate('/dashboard')}
               className="flex items-center gap-3 group cursor-pointer"
             >
-              <div className="w-9 h-9 rounded-xl bg-gradient-to-br from-primary-500 to-primary-700
-                flex items-center justify-center shadow-md shadow-primary-500/20
-                group-hover:shadow-primary-500/40 transition-shadow duration-200">
+              <div className="w-9 h-9 rounded-xl bg-gradient-to-br from-purple-500 via-violet-600 to-purple-800
+                flex items-center justify-center shadow-lg shadow-purple-500/25
+                transition-shadow duration-200">
                 <Cloud size={20} className="text-white" />
               </div>
               <span className="text-lg font-bold text-surface-900 dark:text-surface-100">
-                Cloud<span className="text-primary-500">Vault</span>
+                Cloud<span className="text-primary-400">Vault</span>
               </span>
             </button>
 
@@ -67,9 +84,9 @@ export default function Layout() {
                     hover:border-surface-200 hover:bg-surface-100 dark:hover:border-surface-700 dark:hover:bg-surface-800
                     transition-colors duration-200 cursor-pointer"
                 >
-                  <div className="w-9 h-9 rounded-xl bg-gradient-to-br from-primary-400 to-primary-600
+                  <div className="w-9 h-9 rounded-xl bg-gradient-to-br from-purple-400 via-fuchsia-500 to-purple-600
                     flex items-center justify-center text-white text-xs font-bold
-                    shadow-sm shadow-primary-500/20">
+                    shadow-purple-500/30">
                     {initials}
                   </div>
                   <div className="hidden sm:block text-left">
@@ -91,17 +108,17 @@ export default function Layout() {
                       animate={{ opacity: 1, y: 0, scale: 1 }}
                       exit={{ opacity: 0, y: 8, scale: 0.95 }}
                       transition={{ duration: 0.15 }}
-                      className="absolute right-0 mt-3 w-80 rounded-3xl
-                        bg-white/95 dark:bg-surface-800/95 backdrop-blur
-                        border border-surface-200 dark:border-surface-700
-                        shadow-2xl shadow-black/10 dark:shadow-black/40
+                      className="absolute right-0 mt-3 w-80 rounded-3xl glass-card
+                        bg-white/95 dark:bg-[rgba(15,15,18,0.85)] backdrop-blur
+                        border border-surface-200 dark:border-[rgba(168,85,247,0.15)]
+                        shadow-2xl shadow-black/20 dark:shadow-purple-500/5
                         overflow-hidden"
                     >
                       {/* User info header */}
                       <div className="border-b border-surface-100 px-5 py-4 dark:border-surface-700">
                         <div className="flex items-center gap-3.5">
-                          <div className="h-11 w-11 rounded-2xl bg-gradient-to-br from-primary-400 to-primary-600
-                            flex items-center justify-center text-white text-sm font-bold flex-shrink-0 shadow-sm shadow-primary-500/25">
+                          <div className="h-11 w-11 rounded-2xl bg-gradient-to-br from-purple-400 via-fuchsia-500 to-purple-600
+                            flex items-center justify-center text-white text-sm font-bold flex-shrink-0 shadow-purple-500/30">
                             {initials}
                           </div>
                           <div className="min-w-0">
@@ -119,24 +136,26 @@ export default function Layout() {
                       <div className="space-y-1.5 p-3">
                         <button
                           id="profile-menu-item"
+                          onClick={() => { setProfileOpen(true); setMenuOpen(false); }}
                           className="w-full flex min-h-11 items-center gap-3 rounded-xl px-4 py-3 text-sm font-medium
                             text-surface-700 dark:text-surface-300
                             hover:bg-surface-50 dark:hover:bg-surface-700/60
                             transition-colors duration-150 cursor-pointer"
                         >
-                          <span className="flex h-8 w-8 items-center justify-center rounded-lg bg-surface-100 text-surface-500 dark:bg-surface-700/70 dark:text-surface-300">
+                          <span className="flex h-8 w-8 items-center justify-center rounded-lg bg-surface-100 text-surface-500 dark:bg-[rgba(168,85,247,0.1)] dark:text-surface-300">
                             <User size={16} />
                           </span>
                           My Profile
                         </button>
                         <button
                           id="settings-menu-item"
+                          onClick={() => { setSettingsOpen(true); setMenuOpen(false); }}
                           className="w-full flex min-h-11 items-center gap-3 rounded-xl px-4 py-3 text-sm font-medium
                             text-surface-700 dark:text-surface-300
                             hover:bg-surface-50 dark:hover:bg-surface-700/60
                             transition-colors duration-150 cursor-pointer"
                         >
-                          <span className="flex h-8 w-8 items-center justify-center rounded-lg bg-surface-100 text-surface-500 dark:bg-surface-700/70 dark:text-surface-300">
+                          <span className="flex h-8 w-8 items-center justify-center rounded-lg bg-surface-100 text-surface-500 dark:bg-[rgba(168,85,247,0.1)] dark:text-surface-300">
                             <Settings size={16} />
                           </span>
                           Settings
@@ -153,7 +172,7 @@ export default function Layout() {
                             hover:bg-red-50 dark:hover:bg-red-500/10
                             transition-colors duration-150 cursor-pointer"
                         >
-                          <span className="flex h-8 w-8 items-center justify-center rounded-lg bg-red-50 text-red-500 dark:bg-red-500/15 dark:text-red-400">
+                          <span className="flex h-8 w-8 items-center justify-center rounded-lg bg-red-50 text-red-500 dark:bg-red-500/10 dark:text-red-400">
                             <LogOut size={16} />
                           </span>
                           Sign Out
@@ -172,6 +191,20 @@ export default function Layout() {
       <main className="flex-1 w-full px-4 sm:px-6 lg:px-10 xl:px-14 py-8">
         <Outlet />
       </main>
+
+      {/* Profile Modal */}
+      <ProfileModal
+        isOpen={profileOpen}
+        onClose={() => setProfileOpen(false)}
+        user={user}
+        itemCount={itemCount}
+      />
+
+      {/* Settings Modal */}
+      <SettingsModal
+        isOpen={settingsOpen}
+        onClose={() => setSettingsOpen(false)}
+      />
     </div>
   );
 }

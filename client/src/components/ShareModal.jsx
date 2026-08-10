@@ -102,16 +102,16 @@ export default function ShareModal({ isOpen, onClose, note }) {
             exit={{ opacity: 0, scale: 0.95, y: 20 }}
             transition={{ type: 'spring', damping: 25, stiffness: 300 }}
             className="relative w-full max-w-md rounded-2xl
-              bg-white dark:bg-surface-900
-              border border-surface-200 dark:border-surface-700/50
-              shadow-2xl"
+              bg-white dark:bg-[rgba(15,15,18,0.9)]
+              border border-surface-200 dark:border-[rgba(168,85,247,0.15)]
+              shadow-2xl dark:shadow-purple-500/5 dark:ring-1 dark:ring-purple-500/5"
           >
             {/* Header */}
             <div className="flex items-center justify-between px-6 py-4
-              border-b border-surface-100 dark:border-surface-800">
+              border-b border-surface-100 dark:border-[rgba(168,85,247,0.1)]">
               <div className="flex items-center gap-2">
-                <div className="p-1.5 rounded-lg bg-blue-100 dark:bg-blue-500/20">
-                  <Link2 size={16} className="text-blue-600 dark:text-blue-400" />
+                <div className="p-1.5 rounded-lg bg-purple-100 dark:bg-purple-500/20">
+                  <Link2 size={16} className="text-purple-600 dark:text-purple-400" />
                 </div>
                 <h2 className="text-lg font-semibold text-surface-900 dark:text-surface-100">
                   Share Note
@@ -120,7 +120,7 @@ export default function ShareModal({ isOpen, onClose, note }) {
               <button
                 onClick={handleClose}
                 className="p-1.5 rounded-lg text-surface-400 hover:text-surface-600
-                  hover:bg-surface-100 dark:hover:bg-surface-800 dark:hover:text-surface-300
+                  hover:bg-surface-100 dark:hover:bg-[rgba(168,85,247,0.1)] dark:hover:text-surface-300
                   transition-colors duration-150 cursor-pointer"
               >
                 <X size={18} />
@@ -135,7 +135,7 @@ export default function ShareModal({ isOpen, onClose, note }) {
 
               {loading ? (
                 <div className="flex items-center justify-center py-8">
-                  <Loader2 size={24} className="animate-spin text-primary-500" />
+                  <Loader2 size={24} className="animate-spin text-purple-500" />
                   <span className="ml-2 text-sm text-surface-500">Generating link...</span>
                 </div>
               ) : error ? (
@@ -143,8 +143,8 @@ export default function ShareModal({ isOpen, onClose, note }) {
                   <p className="text-sm text-red-500 mb-3">{error}</p>
                   <button
                     onClick={generateLink}
-                    className="px-4 py-2 rounded-xl text-sm font-medium text-primary-600
-                      hover:bg-primary-50 dark:hover:bg-primary-500/10
+                    className="px-4 py-2 rounded-xl text-sm font-medium text-purple-600
+                      hover:bg-purple-50 dark:hover:bg-purple-500/10
                       transition-colors duration-150 cursor-pointer"
                   >
                     Try again
@@ -154,8 +154,8 @@ export default function ShareModal({ isOpen, onClose, note }) {
                 <div>
                   {/* Link display */}
                   <div className="flex items-center gap-2 p-3 rounded-xl
-                    bg-surface-50 dark:bg-surface-800/50
-                    border border-surface-200 dark:border-surface-700/50">
+                    bg-surface-50 dark:bg-[rgba(15,15,18,0.5)]
+                    border border-surface-200 dark:border-[rgba(168,85,247,0.12)]">
                     <input
                       id="share-link-input"
                       type="text"
@@ -171,7 +171,7 @@ export default function ShareModal({ isOpen, onClose, note }) {
                         transition-all duration-200 cursor-pointer
                         ${copied
                           ? 'bg-emerald-100 text-emerald-700 dark:bg-emerald-500/20 dark:text-emerald-400'
-                          : 'bg-primary-100 text-primary-700 dark:bg-primary-500/20 dark:text-primary-400 hover:bg-primary-200 dark:hover:bg-primary-500/30'
+                          : 'bg-purple-100 text-purple-700 dark:bg-purple-500/20 dark:text-purple-400 hover:bg-purple-200 dark:hover:bg-purple-500/30'
                         }`}
                     >
                       {copied ? <Check size={13} /> : <Copy size={13} />}
@@ -182,7 +182,7 @@ export default function ShareModal({ isOpen, onClose, note }) {
                   {/* Expiry info */}
                   {expiresAt && (
                     <div className="flex items-center gap-2 mt-3 px-3 py-2 rounded-lg
-                      bg-amber-50 dark:bg-amber-500/10
+                      bg-amber-50 dark:bg-amber-500/8
                       border border-amber-200/60 dark:border-amber-500/20">
                       <Clock size={14} className="text-amber-600 dark:text-amber-400 flex-shrink-0" />
                       <span className="text-xs font-medium text-amber-700 dark:text-amber-400">
@@ -196,8 +196,8 @@ export default function ShareModal({ isOpen, onClose, note }) {
                     href={shareLink}
                     target="_blank"
                     rel="noopener noreferrer"
-                    className="inline-flex items-center gap-1.5 mt-3 text-xs text-primary-500
-                      hover:text-primary-600 hover:underline transition-colors duration-150"
+                    className="inline-flex items-center gap-1.5 mt-3 text-xs text-purple-500
+                      hover:text-purple-600 hover:underline transition-colors duration-150"
                   >
                     <ExternalLink size={12} />
                     Open in new tab

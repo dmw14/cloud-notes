@@ -29,7 +29,7 @@ export default function ThemeToggle() {
       id="theme-toggle"
       onClick={() => setIsDark(!isDark)}
       className="relative p-2 rounded-xl transition-colors duration-200 cursor-pointer
-        hover:bg-surface-200 dark:hover:bg-surface-800"
+        hover:bg-surface-200 dark:hover:bg-[rgba(168,85,247,0.1)] hover:shadow-[0_0_12px_rgba(168,85,247,0.15)]"
       aria-label="Toggle theme"
     >
       <motion.div
@@ -38,9 +38,9 @@ export default function ThemeToggle() {
         transition={{ duration: 0.3 }}
       >
         {isDark ? (
-          <Moon size={20} className="text-surface-400" />
+          <Moon size={20} className="text-surface-500 dark:text-purple-300" />
         ) : (
-          <Sun size={20} className="text-surface-600" />
+          <Sun size={20} className="text-surface-500 dark:text-purple-300" />
         )}
       </motion.div>
     </button>

@@ -27,30 +27,30 @@ export default function DeleteConfirm({ isOpen, onClose, onConfirm, note, loadin
             exit={{ opacity: 0, scale: 0.95, y: 20 }}
             transition={{ type: 'spring', damping: 25, stiffness: 300 }}
             className="relative w-full max-w-sm rounded-2xl p-6
-              bg-white dark:bg-surface-900
-              border border-surface-200 dark:border-surface-700/50
-              shadow-2xl"
+              bg-white dark:bg-[rgba(15,15,18,0.9)]
+              border border-surface-200 dark:border-[rgba(168,85,247,0.15)]
+              shadow-2xl dark:shadow-purple-500/5 dark:ring-1 dark:ring-purple-500/5"
           >
             {/* Close button */}
             <button
               onClick={onClose}
               className="absolute top-4 right-4 p-1 rounded-lg text-surface-400
                 hover:text-surface-600 hover:bg-surface-100
-                dark:hover:bg-surface-800 dark:hover:text-surface-300
+                dark:hover:bg-[rgba(168,85,247,0.1)] dark:hover:text-surface-300
                 transition-colors duration-150 cursor-pointer"
             >
               <X size={16} />
             </button>
 
             {/* Icon */}
-            <div className="w-12 h-12 rounded-2xl bg-red-100 dark:bg-red-500/20
+            <div className="w-12 h-12 rounded-2xl bg-red-100 dark:bg-red-500/15
               flex items-center justify-center mb-4">
               <AlertTriangle size={24} className="text-red-500" />
             </div>
 
             {/* Content */}
             <h3 className="text-lg font-semibold text-surface-900 dark:text-surface-100 mb-1">
-              Delete Note
+              Delete Item
             </h3>
             <p className="text-sm text-surface-500 dark:text-surface-400 mb-6 leading-relaxed">
               Are you sure you want to delete{' '}
@@ -66,8 +66,8 @@ export default function DeleteConfirm({ isOpen, onClose, onConfirm, note, loadin
                 onClick={onClose}
                 className="flex-1 min-h-11 rounded-xl px-4 py-2.5 text-sm font-medium
                   text-surface-600 dark:text-surface-400
-                  bg-surface-100 dark:bg-surface-800
-                  hover:bg-surface-200 dark:hover:bg-surface-700
+                  bg-surface-100 dark:bg-[rgba(168,85,247,0.06)]
+                  hover:bg-surface-200 dark:hover:bg-[rgba(168,85,247,0.12)]
                   transition-colors duration-150 cursor-pointer"
               >
                 Cancel
@@ -78,7 +78,7 @@ export default function DeleteConfirm({ isOpen, onClose, onConfirm, note, loadin
                 disabled={loading}
                 className="flex-1 min-h-11 rounded-xl px-4 py-2.5 text-sm font-semibold text-white
                   bg-red-500 hover:bg-red-600
-                  shadow-md shadow-red-500/20
+                  shadow-md shadow-red-500/25
                   disabled:opacity-50 disabled:cursor-not-allowed
                   transition-all duration-200 cursor-pointer
                   flex items-center justify-center gap-2"

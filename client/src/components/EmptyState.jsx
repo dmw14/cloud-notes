@@ -11,22 +11,25 @@ export default function EmptyState({ onCreateNote }) {
     >
       {/* Illustration */}
       <div className="relative mb-8">
-        <div className="w-28 h-28 rounded-3xl bg-gradient-to-br from-primary-500/20 to-primary-600/10
-          dark:from-primary-500/10 dark:to-primary-600/5
-          flex items-center justify-center">
-          <FileText size={48} className="text-primary-500/60" />
+        <div 
+          className="w-28 h-28 rounded-3xl bg-gradient-to-br from-primary-500/20 to-primary-600/10
+            dark:from-purple-500/15 dark:to-fuchsia-600/5
+            flex items-center justify-center"
+          style={{ animation: 'float 6s ease-in-out infinite' }}
+        >
+          <FileText size={48} className="text-purple-400" />
         </div>
         <div className="absolute -top-2 -right-2 w-8 h-8 rounded-xl
-          bg-gradient-to-br from-primary-400 to-primary-600 opacity-30 blur-sm" />
+          bg-gradient-to-br from-purple-400 to-purple-600 opacity-40 blur-sm" />
         <div className="absolute -bottom-1 -left-3 w-6 h-6 rounded-lg
-          bg-gradient-to-br from-violet-400 to-violet-600 opacity-20 blur-sm" />
+          bg-gradient-to-br from-purple-400 to-purple-600 opacity-40 blur-sm" />
       </div>
 
-      <h2 className="text-2xl font-bold text-surface-900 dark:text-surface-100 mb-2">
-        No notes yet
+      <h2 className="text-2xl font-bold text-surface-900 dark:text-white mb-2">
+        Your vault is empty
       </h2>
       <p className="text-surface-500 dark:text-surface-400 text-center max-w-sm mb-8 leading-relaxed">
-        Start capturing your ideas, thoughts, and discoveries. Your first note is just a click away.
+        Start capturing your ideas, notes, photos, and files. Your first item is just a click away.
       </p>
 
       <button
@@ -39,7 +42,7 @@ export default function EmptyState({ onCreateNote }) {
           transform hover:-translate-y-0.5
           transition-all duration-200 cursor-pointer"
       >
-        Create your first note
+        Create your first item
       </button>
     </motion.div>
   );

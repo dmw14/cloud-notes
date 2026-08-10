@@ -5,8 +5,8 @@ export default function LoadingSkeleton({ count = 6 }) {
         <div
           key={i}
           className="rounded-2xl p-5 border
-            bg-white dark:bg-surface-800/40
-            border-surface-200 dark:border-surface-700/50"
+            bg-white dark:bg-[rgba(15,15,18,0.4)]
+            border-surface-200 dark:border-[rgba(168,85,247,0.08)]"
         >
           {/* Title skeleton */}
           <div className="skeleton h-5 w-3/4 rounded-lg mb-4" />
