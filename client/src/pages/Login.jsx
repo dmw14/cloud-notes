@@ -36,48 +36,43 @@ export default function Login() {
   };
   
   return (
-    <div className="relative min-h-screen w-full overflow-hidden auth-bg bg-surface-50 dark:bg-surface-950">
+    <div className="min-h-screen w-full bg-surface-50 dark:bg-surface-950
+      flex items-center justify-center px-4 py-12">
 
-      {/* Decorative background shapes */}
-      <div className="pointer-events-none absolute -top-24 -left-16 h-72 w-72 rounded-full bg-primary-200/60 blur-3xl dark:bg-purple-500/20" />
-      <div className="pointer-events-none absolute -bottom-28 -right-20 h-80 w-80 rounded-full bg-sky-200/60 blur-3xl dark:bg-purple-700/15" />
-      <div className="pointer-events-none absolute top-1/2 left-8 h-28 w-28 -translate-y-1/2 rounded-3xl rotate-12 border border-primary-200/60 bg-white/60 backdrop-blur-sm dark:border-purple-500/15 dark:bg-[rgba(15,15,18,0.3)]" />
-      <div className="pointer-events-none absolute top-24 right-12 h-20 w-20 -rotate-6 rounded-2xl border border-primary-200/60 bg-white/70 backdrop-blur-sm dark:border-purple-500/15 dark:bg-[rgba(15,15,18,0.3)]" />
-      
-      {/* Ambient orbs */}
-      <div className="ambient-orb absolute w-96 h-96 bg-purple-500/10 top-1/4 -left-48" />
-      <div className="ambient-orb absolute w-80 h-80 bg-fuchsia-500/8 bottom-1/4 -right-40" style={{ animationDelay: '-10s' }} />
-
-      <div className="relative z-10 flex min-h-screen w-full items-center justify-center px-4 py-8 sm:px-6 lg:px-8">
-        <motion.div
-          initial={{ opacity: 0, y: 30 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6 }}
-          className="w-full max-w-lg"
-        >
-        {/* Logo + Branding */}
+      <motion.div
+        initial={{ opacity: 0, y: 16 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.4 }}
+        className="w-full max-w-[420px]"
+      >
+        {/* Logo */}
         <div className="text-center mb-8">
-          <div className="mb-4 inline-flex h-14 w-14 items-center justify-center rounded-2xl bg-gradient-to-br from-purple-500 via-violet-600 to-purple-800 shadow-lg shadow-purple-500/40">
-            <Cloud size={30} className="text-white" />
+          <div className="mb-4 inline-flex h-12 w-12 items-center justify-center rounded-xl
+            bg-primary-600 shadow-sm">
+            <Cloud size={24} className="text-white" />
           </div>
-          <h1 className="mb-1 text-3xl font-extrabold text-surface-900 text-gradient-purple">CloudVault</h1>
-          <p className="text-sm text-surface-600 dark:text-surface-400">Your ideas, anywhere.</p>
+          <h1 className="text-2xl font-bold text-surface-900 dark:text-surface-100"
+            style={{ fontFamily: "'Space Grotesk', sans-serif" }}>
+            CloudVault
+          </h1>
+          <p className="text-sm text-surface-500 mt-1">Your ideas, anywhere.</p>
         </div>
 
         {/* Form Card */}
-        <div className="glass-card rounded-3xl border border-surface-200/80 bg-white/95 p-8 sm:p-10 shadow-2xl shadow-surface-900/10 backdrop-blur-xl dark:bg-[rgba(15,15,18,0.7)] dark:border-[rgba(168,85,247,0.15)] dark:shadow-purple-500/5">
+        <div className="rounded-xl border border-surface-200 dark:border-surface-700
+          bg-white dark:bg-surface-900 p-8 shadow-sm">
 
-          <h2 className="text-xl font-bold text-surface-900 dark:text-surface-100 mb-1 text-center">
+          <h2 className="text-lg font-semibold text-surface-900 dark:text-surface-100 mb-1">
             Welcome back
           </h2>
-          <p className="text-surface-500 dark:text-surface-400 mb-7 text-center text-sm">
-            Sign in to access your notes
+          <p className="text-surface-500 mb-6 text-sm">
+            Sign in to access your vault
           </p>
 
-          <form onSubmit={handleSubmit} className="space-y-6">
+          <form onSubmit={handleSubmit} className="space-y-5">
             {/* Email */}
             <div>
-              <label htmlFor="email" className="block text-sm font-medium text-surface-700 dark:text-surface-300 mb-2">
+              <label htmlFor="email" className="block text-sm font-medium text-surface-700 dark:text-surface-300 mb-1.5">
                 Email Address
               </label>
               <input
@@ -86,19 +81,19 @@ export default function Login() {
                 value={email}
                 onChange={(e) => setEmail(e.target.value)}
                 placeholder="you@example.com"
-                className="w-full min-h-13 px-5 py-3.5 rounded-2xl text-[15px]
-                  bg-surface-50 dark:bg-surface-800/60
-                  border-2 border-surface-200 dark:border-surface-700/50
+                className="w-full h-11 px-3.5 rounded-lg text-sm
+                  bg-white dark:bg-surface-800
+                  border border-surface-200 dark:border-surface-700
                   text-surface-900 dark:text-surface-100
                   placeholder:text-surface-400 dark:placeholder:text-surface-500
-                  focus:outline-none focus:ring-4 focus:ring-purple-500/20 focus:border-purple-500
-                  transition-all duration-200"
+                  focus:outline-none focus:ring-2 focus:ring-primary-500/20 focus:border-primary-500
+                  transition-colors duration-150"
               />
             </div>
 
             {/* Password */}
             <div>
-              <label htmlFor="password" className="block text-sm font-medium text-surface-700 dark:text-surface-300 mb-2">
+              <label htmlFor="password" className="block text-sm font-medium text-surface-700 dark:text-surface-300 mb-1.5">
                 Password
               </label>
               <div className="relative">
@@ -108,21 +103,21 @@ export default function Login() {
                   value={password}
                   onChange={(e) => setPassword(e.target.value)}
                   placeholder="Enter your password"
-                  className="w-full min-h-13 px-5 pr-14 py-3.5 rounded-2xl text-[15px]
-                    bg-surface-50 dark:bg-surface-800/60
-                    border-2 border-surface-200 dark:border-surface-700/50
+                  className="w-full h-11 px-3.5 pr-11 rounded-lg text-sm
+                    bg-white dark:bg-surface-800
+                    border border-surface-200 dark:border-surface-700
                     text-surface-900 dark:text-surface-100
                     placeholder:text-surface-400 dark:placeholder:text-surface-500
-                    focus:outline-none focus:ring-4 focus:ring-purple-500/20 focus:border-purple-500
-                    transition-all duration-200"
+                    focus:outline-none focus:ring-2 focus:ring-primary-500/20 focus:border-primary-500
+                    transition-colors duration-150"
                 />
                 <button
                   type="button"
                   onClick={() => setShowPassword(!showPassword)}
-                  className="absolute right-5 top-1/2 -translate-y-1/2 text-surface-400
+                  className="absolute right-3 top-1/2 -translate-y-1/2 text-surface-400
                     hover:text-surface-600 dark:hover:text-surface-300 transition-colors cursor-pointer"
                 >
-                  {showPassword ? <EyeOff size={18} /> : <Eye size={18} />}
+                  {showPassword ? <EyeOff size={16} /> : <Eye size={16} />}
                 </button>
               </div>
             </div>
@@ -132,27 +127,26 @@ export default function Login() {
               id="login-submit"
               type="submit"
               disabled={loading}
-              className="btn-purple-glow w-full min-h-12 rounded-xl px-5 py-3.5 text-sm font-bold text-white tracking-wide
+              className="w-full h-11 rounded-lg text-sm font-semibold text-white
+                bg-primary-600 hover:bg-primary-700
                 disabled:opacity-50 disabled:cursor-not-allowed
-                transform hover:-translate-y-0.5 active:translate-y-0
-                transition-all duration-200 cursor-pointer
+                transition-colors duration-150 cursor-pointer
                 flex items-center justify-center gap-2"
             >
-              {loading && <Loader2 size={18} className="animate-spin" />}
+              {loading && <Loader2 size={16} className="animate-spin" />}
               Sign In
             </button>
           </form>
         </div>
 
         {/* Bottom link */}
-        <p className="mt-6 text-center text-sm text-surface-600 dark:text-surface-400">
+        <p className="mt-6 text-center text-sm text-surface-500">
           Don't have an account?{' '}
-          <Link to="/signup" className="font-bold text-purple-400 hover:text-purple-300 transition-colors">
+          <Link to="/signup" className="font-medium text-primary-600 hover:text-primary-500 transition-colors">
             Sign up
           </Link>
         </p>
-        </motion.div>
-      </div>
+      </motion.div>
     </div>
   );
 }

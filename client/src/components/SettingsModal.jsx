@@ -120,21 +120,21 @@ export default function SettingsModal({ isOpen, onClose }) {
             animate={{ opacity: 1, scale: 1, y: 0 }}
             exit={{ opacity: 0, scale: 0.95, y: 20 }}
             transition={{ type: 'spring', damping: 25, stiffness: 300 }}
-            className="relative w-full max-w-md max-h-[85vh] overflow-hidden rounded-2xl
-              bg-white dark:bg-[rgba(15,15,18,0.95)]
-              border border-surface-200 dark:border-[rgba(168,85,247,0.15)]
-              shadow-2xl dark:shadow-purple-500/5 dark:ring-1 dark:ring-purple-500/5"
+            className="relative w-full max-w-md max-h-[85vh] overflow-hidden rounded-xl
+              bg-white dark:bg-surface-900
+              border border-surface-200 dark:border-surface-700
+              shadow-xl dark:shadow-black/30"
           >
             {/* Header */}
             <div className="flex items-center justify-between px-6 py-4
-              border-b border-surface-100 dark:border-[rgba(168,85,247,0.1)]">
+              border-b border-surface-100 dark:border-surface-800">
               <h2 className="text-lg font-semibold text-surface-900 dark:text-surface-100">
                 Settings
               </h2>
               <button
                 onClick={onClose}
                 className="p-1.5 rounded-lg text-surface-400 hover:text-surface-600
-                  hover:bg-surface-100 dark:hover:bg-[rgba(168,85,247,0.1)] dark:hover:text-surface-300
+                  hover:bg-surface-100 dark:hover:bg-surface-800 dark:hover:text-surface-300
                   transition-colors duration-150 cursor-pointer"
               >
                 <X size={18} />
@@ -153,13 +153,13 @@ export default function SettingsModal({ isOpen, onClose }) {
                 <div className="space-y-1">
                   {/* Day / Night toggle */}
                   <div className="flex items-center justify-between p-3 rounded-xl
-                    hover:bg-surface-50 dark:hover:bg-[rgba(168,85,247,0.04)]
+                    hover:bg-surface-50 dark:hover:bg-surface-800
                     transition-colors duration-150">
                     <div className="flex items-center gap-3">
-                      <div className="w-9 h-9 rounded-lg bg-purple-100 dark:bg-purple-500/15
+                      <div className="w-9 h-9 rounded-lg bg-surface-100 dark:bg-surface-800
                         flex items-center justify-center">
                         {isDark
-                          ? <Moon size={16} className="text-purple-500" />
+                          ? <Moon size={16} className="text-primary-500" />
                           : <Sun size={16} className="text-amber-500" />
                         }
                       </div>
@@ -181,10 +181,10 @@ export default function SettingsModal({ isOpen, onClose }) {
 
                   {/* Compact View */}
                   <div className="flex items-center justify-between p-3 rounded-xl
-                    hover:bg-surface-50 dark:hover:bg-[rgba(168,85,247,0.04)]
+                    hover:bg-surface-50 dark:hover:bg-surface-800
                     transition-colors duration-150">
                     <div className="flex items-center gap-3">
-                      <div className="w-9 h-9 rounded-lg bg-blue-100 dark:bg-blue-500/15
+                      <div className="w-9 h-9 rounded-lg bg-blue-100 dark:bg-blue-500/10
                         flex items-center justify-center">
                         <LayoutGrid size={16} className="text-blue-500" />
                       </div>
@@ -215,10 +215,10 @@ export default function SettingsModal({ isOpen, onClose }) {
                 <div className="space-y-1">
                   {/* Notifications */}
                   <div className="flex items-center justify-between p-3 rounded-xl
-                    hover:bg-surface-50 dark:hover:bg-[rgba(168,85,247,0.04)]
+                    hover:bg-surface-50 dark:hover:bg-surface-800
                     transition-colors duration-150">
                     <div className="flex items-center gap-3">
-                      <div className="w-9 h-9 rounded-lg bg-emerald-100 dark:bg-emerald-500/15
+                      <div className="w-9 h-9 rounded-lg bg-emerald-100 dark:bg-emerald-500/10
                         flex items-center justify-center">
                         <Bell size={16} className="text-emerald-500" />
                       </div>
@@ -240,10 +240,10 @@ export default function SettingsModal({ isOpen, onClose }) {
 
                   {/* Auto-save */}
                   <div className="flex items-center justify-between p-3 rounded-xl
-                    hover:bg-surface-50 dark:hover:bg-[rgba(168,85,247,0.04)]
+                    hover:bg-surface-50 dark:hover:bg-surface-800
                     transition-colors duration-150">
                     <div className="flex items-center gap-3">
-                      <div className="w-9 h-9 rounded-lg bg-amber-100 dark:bg-amber-500/15
+                      <div className="w-9 h-9 rounded-lg bg-amber-100 dark:bg-amber-500/10
                         flex items-center justify-center">
                         <Save size={16} className="text-amber-500" />
                       </div>
@@ -265,10 +265,10 @@ export default function SettingsModal({ isOpen, onClose }) {
 
                   {/* Language */}
                   <div className="flex items-center justify-between p-3 rounded-xl
-                    hover:bg-surface-50 dark:hover:bg-[rgba(168,85,247,0.04)]
+                    hover:bg-surface-50 dark:hover:bg-surface-800
                     transition-colors duration-150">
                     <div className="flex items-center gap-3">
-                      <div className="w-9 h-9 rounded-lg bg-rose-100 dark:bg-rose-500/15
+                      <div className="w-9 h-9 rounded-lg bg-rose-100 dark:bg-rose-500/10
                         flex items-center justify-center">
                         <Globe size={16} className="text-rose-500" />
                       </div>
@@ -287,10 +287,10 @@ export default function SettingsModal({ isOpen, onClose }) {
                       onChange={(e) => setLanguage(e.target.value)}
                       className="settings-select text-sm font-medium cursor-pointer
                         text-surface-700 dark:text-surface-300
-                        bg-surface-100 dark:bg-[rgba(168,85,247,0.08)]
-                        border border-surface-200 dark:border-[rgba(168,85,247,0.15)]
+                        bg-surface-100 dark:bg-surface-800
+                        border border-surface-200 dark:border-surface-700
                         rounded-lg px-2.5 py-1.5
-                        focus:outline-none focus:ring-2 focus:ring-purple-500/30
+                        focus:outline-none focus:ring-2 focus:ring-primary-500/20
                         transition-all duration-150"
                     >
                       {languages.map((lang) => (
@@ -309,10 +309,10 @@ export default function SettingsModal({ isOpen, onClose }) {
                   uppercase tracking-wider mb-3">
                   About
                 </h3>
-                <div className="flex items-center gap-3 p-3 rounded-xl
-                  bg-surface-50 dark:bg-[rgba(168,85,247,0.03)]
-                  border border-surface-100 dark:border-[rgba(168,85,247,0.08)]">
-                  <div className="w-9 h-9 rounded-lg bg-gradient-to-br from-purple-500 via-violet-600 to-purple-800
+                <div className="flex items-center gap-3 p-3 rounded-lg
+                  bg-surface-50 dark:bg-surface-800
+                  border border-surface-100 dark:border-surface-700">
+                  <div className="w-9 h-9 rounded-lg bg-primary-600
                     flex items-center justify-center flex-shrink-0">
                     <Info size={16} className="text-white" />
                   </div>
@@ -329,13 +329,12 @@ export default function SettingsModal({ isOpen, onClose }) {
             </div>
 
             {/* Footer */}
-            <div className="px-6 py-4 border-t border-surface-100 dark:border-[rgba(168,85,247,0.1)]">
+            <div className="px-6 py-4 border-t border-surface-100 dark:border-surface-800">
               <button
                 onClick={onClose}
-                className="w-full min-h-11 rounded-xl px-4 py-2.5 text-sm font-semibold text-white
-                  btn-purple-glow
-                  shadow-md shadow-purple-500/25
-                  transition-all duration-200 cursor-pointer"
+                className="w-full min-h-11 rounded-lg px-4 py-2.5 text-sm font-medium text-white
+                  bg-primary-600 hover:bg-primary-700
+                  transition-colors duration-150 cursor-pointer"
               >
                 Done
               </button>

@@ -3,15 +3,14 @@
 @custom-variant dark (&:where(.dark, .dark *));
 
 /* ═══════════════════════════════════════════════════════════
-   CLOUDVAULT — PREMIUM PURPLE & BLACK DESIGN SYSTEM
+   CLOUDVAULT — DESIGN SYSTEM
    ═══════════════════════════════════════════════════════════ */
 
-/* ─── Theme Variables ─── */
 @theme {
-  --font-sans: 'Space Grotesk', 'Inter', system-ui, -apple-system, sans-serif;
+  --font-sans: 'Inter', system-ui, -apple-system, sans-serif;
+  --font-display: 'Space Grotesk', 'Inter', system-ui, sans-serif;
   --font-mono: 'JetBrains Mono', ui-monospace, monospace;
 
-  /* Primary — Purple / Violet */
   --color-primary-50: #faf5ff;
   --color-primary-100: #f3e8ff;
   --color-primary-200: #e9d5ff;
@@ -23,7 +22,6 @@
   --color-primary-800: #6b21a8;
   --color-primary-900: #581c87;
 
-  /* Surface — Deep Black/Charcoal */
   --color-surface-50: #fafafa;
   --color-surface-100: #f4f4f5;
   --color-surface-200: #e4e4e7;
@@ -37,7 +35,7 @@
   --color-surface-950: #09090b;
 }
 
-/* ─── Base Styles ─── */
+/* ─── Base ─── */
 * {
   margin: 0;
   padding: 0;
@@ -52,10 +50,10 @@ html {
 
 body {
   font-family: var(--font-sans);
-  transition: background-color 0.3s ease, color 0.3s ease;
+  transition: background-color 0.2s ease, color 0.2s ease;
 }
 
-/* ─── Form Element Resets ─── */
+/* ─── Form Resets ─── */
 input, textarea, select {
   -webkit-appearance: none;
   -moz-appearance: none;
@@ -72,9 +70,9 @@ textarea {
   border-style: solid;
   border-width: 1px;
   border-color: var(--color-surface-200);
-  background-color: var(--color-surface-50);
-  border-radius: 12px;
-  box-shadow: 0 1px 3px rgba(0,0,0,0.04);
+  background-color: white;
+  border-radius: 10px;
+  box-shadow: 0 1px 2px rgba(0,0,0,0.04);
   color: var(--color-surface-900);
 }
 
@@ -83,16 +81,16 @@ html.dark input[type="email"],
 html.dark input[type="password"],
 html.dark input[type="search"],
 html.dark textarea {
-  border-color: rgba(168, 85, 247, 0.15);
-  background-color: rgba(15, 15, 18, 0.7);
+  border-color: var(--color-surface-700);
+  background-color: var(--color-surface-800);
   color: var(--color-surface-100);
-  box-shadow: 0 0 0 1px rgba(168, 85, 247, 0.06), 0 1px 3px rgba(0,0,0,0.2);
+  box-shadow: none;
 }
 
 html.dark input:focus,
 html.dark textarea:focus {
   border-color: var(--color-primary-500) !important;
-  box-shadow: 0 0 0 3px rgba(168, 85, 247, 0.15), 0 0 20px rgba(168, 85, 247, 0.08) !important;
+  box-shadow: 0 0 0 3px rgba(168, 85, 247, 0.12) !important;
 }
 
 input::placeholder, textarea::placeholder {
@@ -103,9 +101,9 @@ html.dark input::placeholder, html.dark textarea::placeholder {
   color: var(--color-surface-500);
 }
 
-/* ─── Light Mode (default) ─── */
+/* ─── Light Mode ─── */
 html:not(.dark) body {
-  background-color: var(--color-surface-50);
+  background-color: #f8f8fa;
   color: var(--color-surface-900);
 }
 
@@ -115,7 +113,7 @@ html.dark body {
   color: var(--color-surface-100);
 }
 
-/* ─── Custom Scrollbar ─── */
+/* ─── Scrollbar ─── */
 ::-webkit-scrollbar {
   width: 6px;
   height: 6px;
@@ -125,23 +123,26 @@ html.dark body {
   background: transparent;
 }
 
-html:not(.dark) ::-webkit-scrollbar-thumb {
+::-webkit-scrollbar-thumb {
   background: var(--color-surface-300);
   border-radius: 999px;
 }
 
 html.dark ::-webkit-scrollbar-thumb {
-  background: rgba(168, 85, 247, 0.25);
-  border-radius: 999px;
+  background: var(--color-surface-700);
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  background: var(--color-primary-500);
+  background: var(--color-surface-400);
+}
+
+html.dark ::-webkit-scrollbar-thumb:hover {
+  background: var(--color-surface-600);
 }
 
 /* ─── Selection ─── */
 ::selection {
-  background-color: rgba(168, 85, 247, 0.35);
+  background-color: rgba(168, 85, 247, 0.25);
   color: white;
 }
 
@@ -152,7 +153,7 @@ html.dark ::-webkit-scrollbar-thumb {
 }
 
 /* ═══════════════════════════════════════════════════════════
-   ANIMATIONS
+   ANIMATIONS (minimal & purposeful)
    ═══════════════════════════════════════════════════════════ */
 
 @keyframes shimmer {
@@ -161,169 +162,82 @@ html.dark ::-webkit-scrollbar-thumb {
 }
 
 @keyframes fadeInUp {
-  from {
-    opacity: 0;
-    transform: translateY(12px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
+  from { opacity: 0; transform: translateY(8px); }
+  to { opacity: 1; transform: translateY(0); }
 }
 
 @keyframes float {
-  0%, 100% { transform: translateY(0) rotate(0deg); }
-  33% { transform: translateY(-8px) rotate(1deg); }
-  66% { transform: translateY(4px) rotate(-1deg); }
-}
-
-@keyframes glow-pulse {
-  0%, 100% { opacity: 0.4; transform: scale(1); }
-  50% { opacity: 0.8; transform: scale(1.05); }
-}
-
-@keyframes gradient-shift {
-  0% { background-position: 0% 50%; }
-  50% { background-position: 100% 50%; }
-  100% { background-position: 0% 50%; }
-}
-
-@keyframes orb-drift {
-  0% { transform: translate(0, 0) scale(1); }
-  25% { transform: translate(30px, -50px) scale(1.1); }
-  50% { transform: translate(-20px, -100px) scale(0.95); }
-  75% { transform: translate(50px, -30px) scale(1.05); }
-  100% { transform: translate(0, 0) scale(1); }
-}
-
-@keyframes border-glow {
-  0%, 100% { border-color: rgba(168, 85, 247, 0.15); }
-  50% { border-color: rgba(168, 85, 247, 0.35); }
-}
-
-@keyframes spin-slow {
-  from { transform: rotate(0deg); }
-  to { transform: rotate(360deg); }
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-6px); }
 }
 
 /* ═══════════════════════════════════════════════════════════
-   GLASSMORPHISM & GLOW UTILITIES
+   COMPONENT STYLES
    ═══════════════════════════════════════════════════════════ */
 
-/* Glass card for dark mode */
+/* ─── Glass Surface (header only) ─── */
+.glass-surface {
+  backdrop-filter: blur(12px) saturate(1.2);
+  -webkit-backdrop-filter: blur(12px) saturate(1.2);
+}
+
+/* ─── Card (dropdown menu) ─── */
 .glass-card {
-  background: rgba(15, 15, 18, 0.6);
-  backdrop-filter: blur(20px) saturate(1.5);
-  -webkit-backdrop-filter: blur(20px) saturate(1.5);
-  border: 1px solid rgba(168, 85, 247, 0.12);
-  box-shadow:
-    0 0 0 1px rgba(168, 85, 247, 0.05),
-    0 4px 24px rgba(0, 0, 0, 0.3),
-    0 0 60px rgba(168, 85, 247, 0.04);
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
 }
 
-.glass-card:hover {
-  border-color: rgba(168, 85, 247, 0.25);
-  box-shadow:
-    0 0 0 1px rgba(168, 85, 247, 0.1),
-    0 8px 32px rgba(0, 0, 0, 0.4),
-    0 0 80px rgba(168, 85, 247, 0.08);
-}
-
-/* Glass card for light mode */
 html:not(.dark) .glass-card {
-  background: rgba(255, 255, 255, 0.85);
-  border: 1px solid rgba(168, 85, 247, 0.12);
+  background: rgba(255, 255, 255, 0.95);
+  border: 1px solid var(--color-surface-200);
   box-shadow:
-    0 4px 24px rgba(0, 0, 0, 0.06),
-    0 0 40px rgba(168, 85, 247, 0.04);
+    0 4px 6px -1px rgba(0, 0, 0, 0.07),
+    0 10px 15px -3px rgba(0, 0, 0, 0.05);
 }
 
 html:not(.dark) .glass-card:hover {
-  border-color: rgba(168, 85, 247, 0.2);
   box-shadow:
-    0 8px 32px rgba(0, 0, 0, 0.08),
-    0 0 60px rgba(168, 85, 247, 0.06);
+    0 4px 6px -1px rgba(0, 0, 0, 0.08),
+    0 10px 15px -3px rgba(0, 0, 0, 0.06);
 }
 
-/* Glassmorphism surface (subtler) */
-.glass-surface {
-  background: rgba(15, 15, 18, 0.4);
-  backdrop-filter: blur(16px) saturate(1.3);
-  -webkit-backdrop-filter: blur(16px) saturate(1.3);
-  border: 1px solid rgba(168, 85, 247, 0.08);
+html.dark .glass-card {
+  background: var(--color-surface-900);
+  border: 1px solid var(--color-surface-700);
+  box-shadow:
+    0 4px 6px -1px rgba(0, 0, 0, 0.3),
+    0 10px 15px -3px rgba(0, 0, 0, 0.2);
 }
 
-html:not(.dark) .glass-surface {
-  background: rgba(255, 255, 255, 0.7);
-  border: 1px solid rgba(168, 85, 247, 0.08);
+html.dark .glass-card:hover {
+  border-color: var(--color-surface-600);
 }
 
-/* Glow border on hover */
-.glow-border {
-  position: relative;
-  transition: border-color 0.3s ease, box-shadow 0.3s ease;
-}
-
-.glow-border:hover {
-  border-color: rgba(168, 85, 247, 0.3);
-  box-shadow: 0 0 20px rgba(168, 85, 247, 0.1), inset 0 0 20px rgba(168, 85, 247, 0.03);
-}
-
-/* Purple accent gradient button */
+/* ─── Primary Button ─── */
 .btn-purple-glow {
-  background: linear-gradient(135deg, #a855f7 0%, #7c3aed 50%, #9333ea 100%);
-  background-size: 200% 200%;
-  animation: gradient-shift 4s ease infinite;
-  box-shadow: 0 4px 20px rgba(168, 85, 247, 0.35), 0 0 40px rgba(168, 85, 247, 0.1);
-  transition: all 0.3s ease;
+  background: var(--color-primary-600);
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12), 0 1px 2px rgba(0, 0, 0, 0.06);
+  transition: all 0.15s ease;
 }
 
 .btn-purple-glow:hover {
-  box-shadow: 0 6px 30px rgba(168, 85, 247, 0.5), 0 0 60px rgba(168, 85, 247, 0.15);
-  transform: translateY(-2px);
+  background: var(--color-primary-700);
+  box-shadow: 0 4px 12px rgba(147, 51, 234, 0.3);
 }
 
 .btn-purple-glow:active {
+  background: var(--color-primary-800);
   transform: translateY(0);
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
 }
 
-/* Ambient glow orb */
-.ambient-orb {
-  position: absolute;
-  border-radius: 50%;
-  filter: blur(80px);
-  pointer-events: none;
-  animation: orb-drift 20s ease-in-out infinite;
-}
-
-/* Animated gradient background for auth pages */
+/* ─── Auth Background ─── */
 .auth-bg {
   position: relative;
   overflow: hidden;
 }
 
-.auth-bg::before {
-  content: '';
-  position: absolute;
-  top: -50%;
-  left: -50%;
-  width: 200%;
-  height: 200%;
-  background: radial-gradient(ellipse at 30% 20%, rgba(168, 85, 247, 0.12) 0%, transparent 50%),
-              radial-gradient(ellipse at 70% 80%, rgba(124, 58, 237, 0.08) 0%, transparent 50%),
-              radial-gradient(ellipse at 50% 50%, rgba(147, 51, 234, 0.05) 0%, transparent 70%);
-  animation: gradient-shift 15s ease infinite;
-  background-size: 200% 200%;
-  pointer-events: none;
-}
-
-html:not(.dark) .auth-bg::before {
-  background: radial-gradient(ellipse at 30% 20%, rgba(168, 85, 247, 0.08) 0%, transparent 50%),
-              radial-gradient(ellipse at 70% 80%, rgba(124, 58, 237, 0.06) 0%, transparent 50%);
-}
-
-/* ─── Skeleton Styles ─── */
+/* ─── Skeleton ─── */
 .skeleton {
   background: linear-gradient(90deg, 
     var(--color-surface-200) 25%, 
@@ -331,23 +245,24 @@ html:not(.dark) .auth-bg::before {
     var(--color-surface-200) 75%
   );
   background-size: 200% 100%;
-  animation: shimmer 1.5s infinite;
+  animation: shimmer 1.8s ease-in-out infinite;
 }
 
 html.dark .skeleton {
   background: linear-gradient(90deg, 
-    rgba(168, 85, 247, 0.06) 25%, 
-    rgba(168, 85, 247, 0.12) 50%, 
-    rgba(168, 85, 247, 0.06) 75%
+    var(--color-surface-800) 25%, 
+    var(--color-surface-700) 50%, 
+    var(--color-surface-800) 75%
   );
   background-size: 200% 100%;
 }
 
-/* ─── Markdown Styles ─── */
+/* ─── Markdown ─── */
 .markdown-body h1,
 .markdown-body h2,
 .markdown-body h3,
 .markdown-body h4 {
+  font-family: var(--font-display);
   font-weight: 700;
   margin-top: 1.5em;
   margin-bottom: 0.5em;
@@ -386,7 +301,7 @@ html:not(.dark) .markdown-body code {
 }
 
 html.dark .markdown-body code {
-  background: rgba(168, 85, 247, 0.1);
+  background: var(--color-surface-800);
   color: var(--color-primary-300);
 }
 
@@ -403,9 +318,9 @@ html:not(.dark) .markdown-body pre {
 }
 
 html.dark .markdown-body pre {
-  background: rgba(15, 15, 18, 0.8);
+  background: var(--color-surface-800);
   color: var(--color-surface-200);
-  border: 1px solid rgba(168, 85, 247, 0.1);
+  border: 1px solid var(--color-surface-700);
 }
 
 .markdown-body pre code {
@@ -421,17 +336,13 @@ html.dark .markdown-body pre {
   font-style: italic;
 }
 
-html:not(.dark) .markdown-body blockquote {
-  color: var(--color-surface-600);
-}
-
-html.dark .markdown-body blockquote {
-  color: var(--color-surface-400);
-}
+html:not(.dark) .markdown-body blockquote { color: var(--color-surface-600); }
+html.dark .markdown-body blockquote { color: var(--color-surface-400); }
 
 .markdown-body a {
-  color: var(--color-primary-400);
+  color: var(--color-primary-500);
   text-decoration: underline;
+  text-underline-offset: 2px;
 }
 
 .markdown-body hr {
@@ -441,7 +352,7 @@ html.dark .markdown-body blockquote {
 }
 
 html.dark .markdown-body hr {
-  border-top-color: rgba(168, 85, 247, 0.12);
+  border-top-color: var(--color-surface-700);
 }
 
 .markdown-body table {
@@ -466,15 +377,15 @@ html:not(.dark) .markdown-body td {
 }
 
 html.dark .markdown-body th {
-  background: rgba(168, 85, 247, 0.06);
-  border-bottom: 2px solid rgba(168, 85, 247, 0.12);
+  background: var(--color-surface-800);
+  border-bottom: 2px solid var(--color-surface-700);
 }
 
 html.dark .markdown-body td {
-  border-bottom: 1px solid rgba(168, 85, 247, 0.08);
+  border-bottom: 1px solid var(--color-surface-700);
 }
 
-/* ─── Toast Overrides ─── */
+/* ─── Toast ─── */
 .toast-custom {
   font-family: var(--font-sans) !important;
 }
@@ -483,53 +394,39 @@ html.dark .markdown-body td {
 .drop-zone {
   position: relative;
   border: 2px dashed var(--color-surface-300);
-  border-radius: 16px;
+  border-radius: 12px;
   padding: 1.5rem;
   text-align: center;
   cursor: pointer;
-  transition: border-color 0.3s ease, background-color 0.3s ease, box-shadow 0.3s ease;
+  transition: border-color 0.2s ease, background-color 0.2s ease;
 }
 
 html.dark .drop-zone {
-  border-color: rgba(168, 85, 247, 0.2);
-  background: rgba(168, 85, 247, 0.03);
+  border-color: var(--color-surface-600);
+  background: transparent;
 }
 
 .drop-zone:hover,
 .drop-zone--active {
   border-color: var(--color-primary-400);
-  background-color: rgba(168, 85, 247, 0.04);
+  background-color: var(--color-primary-50);
 }
 
 html.dark .drop-zone:hover,
 html.dark .drop-zone--active {
   border-color: var(--color-primary-500);
-  background-color: rgba(168, 85, 247, 0.08);
-  box-shadow: 0 0 30px rgba(168, 85, 247, 0.08);
+  background-color: rgba(168, 85, 247, 0.06);
 }
 
-/* ─── Upload Progress Bar ─── */
-@keyframes progress-stripe {
-  0% { background-position: 1rem 0; }
-  100% { background-position: 0 0; }
-}
-
+/* ─── Upload Progress ─── */
 .upload-progress-bar {
-  height: 6px;
+  height: 4px;
   border-radius: 999px;
-  background: linear-gradient(
-    90deg,
-    var(--color-primary-600) 0%,
-    var(--color-primary-400) 50%,
-    var(--color-primary-600) 100%
-  );
-  background-size: 1rem 1rem;
-  animation: progress-stripe 0.6s linear infinite;
+  background: var(--color-primary-500);
   transition: width 0.3s ease;
-  box-shadow: 0 0 12px rgba(168, 85, 247, 0.4);
 }
 
-/* ─── File Thumbnail Grid ─── */
+/* ─── File Thumbnails ─── */
 .file-thumb-grid {
   display: flex;
   gap: 6px;
@@ -546,7 +443,7 @@ html.dark .drop-zone--active {
 }
 
 html.dark .file-thumb {
-  border-color: rgba(168, 85, 247, 0.15);
+  border-color: var(--color-surface-700);
 }
 
 .file-thumb-more {
@@ -565,20 +462,21 @@ html.dark .file-thumb {
 }
 
 html.dark .file-thumb-more {
-  background: rgba(168, 85, 247, 0.08);
-  color: var(--color-primary-300);
-  border-color: rgba(168, 85, 247, 0.15);
+  background: var(--color-surface-800);
+  color: var(--color-surface-400);
+  border-color: var(--color-surface-700);
 }
 
-/* ─── Gradient Text Utility ─── */
+/* ─── Heading Accent ─── */
 .text-gradient-purple {
-  background: linear-gradient(135deg, #c084fc 0%, #a855f7 50%, #7c3aed 100%);
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-  background-clip: text;
+  color: var(--color-surface-900);
 }
 
-/* ─── Settings Toggle Switch ─── */
+html.dark .text-gradient-purple {
+  color: var(--color-surface-100);
+}
+
+/* ─── Settings Toggle ─── */
 .settings-toggle {
   position: relative;
   width: 44px;
@@ -587,18 +485,17 @@ html.dark .file-thumb-more {
   border: none;
   cursor: pointer;
   background: var(--color-surface-300);
-  transition: background-color 0.25s ease, box-shadow 0.25s ease;
+  transition: background-color 0.2s ease;
   flex-shrink: 0;
   padding: 0;
 }
 
 html.dark .settings-toggle {
-  background: rgba(168, 85, 247, 0.15);
+  background: var(--color-surface-600);
 }
 
 .settings-toggle--active {
-  background: linear-gradient(135deg, #a855f7, #7c3aed) !important;
-  box-shadow: 0 0 12px rgba(168, 85, 247, 0.35);
+  background: var(--color-primary-600) !important;
 }
 
 .settings-toggle-thumb {
@@ -607,16 +504,16 @@ html.dark .settings-toggle {
   height: 18px;
   border-radius: 50%;
   background: white;
-  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.15);
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.12);
   transform: translateX(3px);
-  transition: transform 0.25s ease;
+  transition: transform 0.2s ease;
 }
 
 .settings-toggle-thumb--active {
   transform: translateX(23px);
 }
 
-/* ─── Settings Select Override ─── */
+/* ─── Settings Select ─── */
 .settings-select {
   -webkit-appearance: none;
   -moz-appearance: none;

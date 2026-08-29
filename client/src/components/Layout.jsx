@@ -51,9 +51,9 @@ export default function Layout() {
   return (
     <div className="min-h-screen flex flex-col bg-surface-50 dark:bg-surface-950 transition-colors duration-300">
       {/* Top Navigation */}
-      <header className="sticky top-0 z-40 backdrop-blur-xl glass-surface
-        bg-white/80 dark:bg-[rgba(15,15,18,0.7)]
-        border-b border-surface-200 dark:border-[rgba(168,85,247,0.1)]">
+      <header className="sticky top-0 z-40 glass-surface
+        bg-white/95 dark:bg-surface-950/95
+        border-b border-surface-200 dark:border-surface-800">
         <div className="w-full px-4 sm:px-6 lg:px-10 xl:px-14">
           <div className="flex items-center justify-between h-16">
             {/* Logo */}
@@ -61,9 +61,8 @@ export default function Layout() {
               onClick={() => navigate('/dashboard')}
               className="flex items-center gap-3 group cursor-pointer"
             >
-              <div className="w-9 h-9 rounded-xl bg-gradient-to-br from-purple-500 via-violet-600 to-purple-800
-                flex items-center justify-center shadow-lg shadow-purple-500/25
-                transition-shadow duration-200">
+              <div className="w-9 h-9 rounded-xl bg-primary-600
+                flex items-center justify-center">
                 <Cloud size={20} className="text-white" />
               </div>
               <span className="text-lg font-bold text-surface-900 dark:text-surface-100">
@@ -84,9 +83,8 @@ export default function Layout() {
                     hover:border-surface-200 hover:bg-surface-100 dark:hover:border-surface-700 dark:hover:bg-surface-800
                     transition-colors duration-200 cursor-pointer"
                 >
-                  <div className="w-9 h-9 rounded-xl bg-gradient-to-br from-purple-400 via-fuchsia-500 to-purple-600
-                    flex items-center justify-center text-white text-xs font-bold
-                    shadow-purple-500/30">
+                  <div className="w-8 h-8 rounded-lg bg-primary-600
+                    flex items-center justify-center text-white text-xs font-bold">
                     {initials}
                   </div>
                   <div className="hidden sm:block text-left">
@@ -108,17 +106,17 @@ export default function Layout() {
                       animate={{ opacity: 1, y: 0, scale: 1 }}
                       exit={{ opacity: 0, y: 8, scale: 0.95 }}
                       transition={{ duration: 0.15 }}
-                      className="absolute right-0 mt-3 w-80 rounded-3xl glass-card
-                        bg-white/95 dark:bg-[rgba(15,15,18,0.85)] backdrop-blur
-                        border border-surface-200 dark:border-[rgba(168,85,247,0.15)]
-                        shadow-2xl shadow-black/20 dark:shadow-purple-500/5
+                      className="absolute right-0 mt-2 w-72 rounded-xl
+                        bg-white dark:bg-surface-900
+                        border border-surface-200 dark:border-surface-700
+                        shadow-lg shadow-black/8 dark:shadow-black/30
                         overflow-hidden"
                     >
                       {/* User info header */}
-                      <div className="border-b border-surface-100 px-5 py-4 dark:border-surface-700">
+                      <div className="border-b border-surface-100 px-4 py-3 dark:border-surface-800">
                         <div className="flex items-center gap-3.5">
-                          <div className="h-11 w-11 rounded-2xl bg-gradient-to-br from-purple-400 via-fuchsia-500 to-purple-600
-                            flex items-center justify-center text-white text-sm font-bold flex-shrink-0 shadow-purple-500/30">
+                          <div className="h-10 w-10 rounded-lg bg-primary-600
+                            flex items-center justify-center text-white text-sm font-bold flex-shrink-0">
                             {initials}
                           </div>
                           <div className="min-w-0">
@@ -139,10 +137,10 @@ export default function Layout() {
                           onClick={() => { setProfileOpen(true); setMenuOpen(false); }}
                           className="w-full flex min-h-11 items-center gap-3 rounded-xl px-4 py-3 text-sm font-medium
                             text-surface-700 dark:text-surface-300
-                            hover:bg-surface-50 dark:hover:bg-surface-700/60
+                            hover:bg-surface-50 dark:hover:bg-surface-800
                             transition-colors duration-150 cursor-pointer"
                         >
-                          <span className="flex h-8 w-8 items-center justify-center rounded-lg bg-surface-100 text-surface-500 dark:bg-[rgba(168,85,247,0.1)] dark:text-surface-300">
+                          <span className="flex h-8 w-8 items-center justify-center rounded-lg bg-surface-100 text-surface-500 dark:bg-surface-800 dark:text-surface-300">
                             <User size={16} />
                           </span>
                           My Profile
@@ -152,10 +150,10 @@ export default function Layout() {
                           onClick={() => { setSettingsOpen(true); setMenuOpen(false); }}
                           className="w-full flex min-h-11 items-center gap-3 rounded-xl px-4 py-3 text-sm font-medium
                             text-surface-700 dark:text-surface-300
-                            hover:bg-surface-50 dark:hover:bg-surface-700/60
+                            hover:bg-surface-50 dark:hover:bg-surface-800
                             transition-colors duration-150 cursor-pointer"
                         >
-                          <span className="flex h-8 w-8 items-center justify-center rounded-lg bg-surface-100 text-surface-500 dark:bg-[rgba(168,85,247,0.1)] dark:text-surface-300">
+                          <span className="flex h-8 w-8 items-center justify-center rounded-lg bg-surface-100 text-surface-500 dark:bg-surface-800 dark:text-surface-300">
                             <Settings size={16} />
                           </span>
                           Settings
@@ -163,7 +161,7 @@ export default function Layout() {
                       </div>
 
                       {/* Logout */}
-                      <div className="mt-0 border-t border-surface-100 p-3 pt-2 dark:border-surface-700">
+                      <div className="mt-0 border-t border-surface-100 p-3 pt-2 dark:border-surface-800">
                         <button
                           id="logout-button"
                           onClick={handleLogout}

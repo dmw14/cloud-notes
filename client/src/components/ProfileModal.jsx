@@ -47,10 +47,10 @@ export default function ProfileModal({ isOpen, onClose, user, itemCount = 0 }) {
             animate={{ opacity: 1, scale: 1, y: 0 }}
             exit={{ opacity: 0, scale: 0.95, y: 20 }}
             transition={{ type: 'spring', damping: 25, stiffness: 300 }}
-            className="relative w-full max-w-md overflow-hidden rounded-2xl
-              bg-white dark:bg-[rgba(15,15,18,0.95)]
-              border border-surface-200 dark:border-[rgba(168,85,247,0.15)]
-              shadow-2xl dark:shadow-purple-500/5 dark:ring-1 dark:ring-purple-500/5"
+            className="relative w-full max-w-md overflow-hidden rounded-xl
+              bg-white dark:bg-surface-900
+              border border-surface-200 dark:border-surface-700
+              shadow-xl dark:shadow-black/30"
           >
             {/* Close button */}
             <button
@@ -63,27 +63,21 @@ export default function ProfileModal({ isOpen, onClose, user, itemCount = 0 }) {
             </button>
 
             {/* Profile Header with gradient */}
-            <div className="relative px-6 pt-8 pb-12 bg-gradient-to-br from-purple-500 via-violet-600 to-purple-800
+            <div className="relative px-6 pt-8 pb-12 bg-primary-600
               overflow-hidden">
-              {/* Decorative orbs */}
-              <div className="absolute top-0 right-0 w-32 h-32 rounded-full
-                bg-white/10 blur-2xl -translate-y-1/2 translate-x-1/2" />
-              <div className="absolute bottom-0 left-0 w-24 h-24 rounded-full
-                bg-purple-300/15 blur-2xl translate-y-1/2 -translate-x-1/2" />
 
               <div className="relative flex flex-col items-center">
                 {/* Avatar */}
-                <div className="w-20 h-20 rounded-2xl bg-white/20 backdrop-blur-sm
-                  border-2 border-white/30
-                  flex items-center justify-center text-white text-2xl font-bold
-                  shadow-lg shadow-purple-900/30
+                <div className="w-16 h-16 rounded-xl bg-white/20
+                  border border-white/25
+                  flex items-center justify-center text-white text-xl font-bold
                   mb-4">
                   {initials}
                 </div>
                 <h2 className="text-xl font-bold text-white mb-0.5">
                   {user.name}
                 </h2>
-                <p className="text-sm text-purple-200/80">
+                <p className="text-sm text-white/70">
                   Member since {memberSince}
                 </p>
               </div>
@@ -93,11 +87,11 @@ export default function ProfileModal({ isOpen, onClose, user, itemCount = 0 }) {
             <div className="px-6 py-5 space-y-1">
               {/* Email */}
               <div className="flex items-center gap-4 p-3 rounded-xl
-                hover:bg-surface-50 dark:hover:bg-[rgba(168,85,247,0.04)]
+                hover:bg-surface-50 dark:hover:bg-surface-800
                 transition-colors duration-150">
-                <div className="w-10 h-10 rounded-xl bg-purple-100 dark:bg-purple-500/15
+                <div className="w-10 h-10 rounded-lg bg-primary-100 dark:bg-primary-500/10
                   flex items-center justify-center flex-shrink-0">
-                  <Mail size={18} className="text-purple-500" />
+                  <Mail size={18} className="text-primary-500" />
                 </div>
                 <div className="min-w-0">
                   <p className="text-[11px] font-medium text-surface-400 dark:text-surface-500 uppercase tracking-wider">
@@ -111,9 +105,9 @@ export default function ProfileModal({ isOpen, onClose, user, itemCount = 0 }) {
 
               {/* Joined */}
               <div className="flex items-center gap-4 p-3 rounded-xl
-                hover:bg-surface-50 dark:hover:bg-[rgba(168,85,247,0.04)]
+                hover:bg-surface-50 dark:hover:bg-surface-800
                 transition-colors duration-150">
-                <div className="w-10 h-10 rounded-xl bg-emerald-100 dark:bg-emerald-500/15
+                <div className="w-10 h-10 rounded-lg bg-emerald-100 dark:bg-emerald-500/10
                   flex items-center justify-center flex-shrink-0">
                   <Calendar size={18} className="text-emerald-500" />
                 </div>
@@ -129,9 +123,9 @@ export default function ProfileModal({ isOpen, onClose, user, itemCount = 0 }) {
 
               {/* Total Items */}
               <div className="flex items-center gap-4 p-3 rounded-xl
-                hover:bg-surface-50 dark:hover:bg-[rgba(168,85,247,0.04)]
+                hover:bg-surface-50 dark:hover:bg-surface-800
                 transition-colors duration-150">
-                <div className="w-10 h-10 rounded-xl bg-blue-100 dark:bg-blue-500/15
+                <div className="w-10 h-10 rounded-lg bg-blue-100 dark:bg-blue-500/10
                   flex items-center justify-center flex-shrink-0">
                   <FolderOpen size={18} className="text-blue-500" />
                 </div>
@@ -147,9 +141,9 @@ export default function ProfileModal({ isOpen, onClose, user, itemCount = 0 }) {
 
               {/* Account Status */}
               <div className="flex items-center gap-4 p-3 rounded-xl
-                hover:bg-surface-50 dark:hover:bg-[rgba(168,85,247,0.04)]
+                hover:bg-surface-50 dark:hover:bg-surface-800
                 transition-colors duration-150">
-                <div className="w-10 h-10 rounded-xl bg-amber-100 dark:bg-amber-500/15
+                <div className="w-10 h-10 rounded-lg bg-amber-100 dark:bg-amber-500/10
                   flex items-center justify-center flex-shrink-0">
                   <Shield size={18} className="text-amber-500" />
                 </div>
@@ -158,7 +152,7 @@ export default function ProfileModal({ isOpen, onClose, user, itemCount = 0 }) {
                     Account Status
                   </p>
                   <div className="flex items-center gap-2">
-                    <span className="w-2 h-2 rounded-full bg-emerald-500 animate-pulse" />
+                    <span className="w-2 h-2 rounded-full bg-emerald-500" />
                     <p className="text-sm font-medium text-emerald-600 dark:text-emerald-400">
                       Active
                     </p>
@@ -171,10 +165,10 @@ export default function ProfileModal({ isOpen, onClose, user, itemCount = 0 }) {
             <div className="px-6 pb-5">
               <button
                 onClick={onClose}
-                className="w-full min-h-11 rounded-xl px-4 py-2.5 text-sm font-medium
+                className="w-full min-h-11 rounded-lg px-4 py-2.5 text-sm font-medium
                   text-surface-600 dark:text-surface-400
-                  bg-surface-100 dark:bg-[rgba(168,85,247,0.06)]
-                  hover:bg-surface-200 dark:hover:bg-[rgba(168,85,247,0.12)]
+                  bg-surface-100 dark:bg-surface-800
+                  hover:bg-surface-200 dark:hover:bg-surface-700
                   transition-colors duration-150 cursor-pointer"
               >
                 Close

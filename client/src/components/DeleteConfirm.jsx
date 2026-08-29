@@ -27,16 +27,16 @@ export default function DeleteConfirm({ isOpen, onClose, onConfirm, note, loadin
             exit={{ opacity: 0, scale: 0.95, y: 20 }}
             transition={{ type: 'spring', damping: 25, stiffness: 300 }}
             className="relative w-full max-w-sm rounded-2xl p-6
-              bg-white dark:bg-[rgba(15,15,18,0.9)]
-              border border-surface-200 dark:border-[rgba(168,85,247,0.15)]
-              shadow-2xl dark:shadow-purple-500/5 dark:ring-1 dark:ring-purple-500/5"
+              bg-white dark:bg-surface-900
+              border border-surface-200 dark:border-surface-700
+              shadow-xl dark:shadow-black/30"
           >
             {/* Close button */}
             <button
               onClick={onClose}
               className="absolute top-4 right-4 p-1 rounded-lg text-surface-400
                 hover:text-surface-600 hover:bg-surface-100
-                dark:hover:bg-[rgba(168,85,247,0.1)] dark:hover:text-surface-300
+                dark:hover:bg-surface-800 dark:hover:text-surface-300
                 transition-colors duration-150 cursor-pointer"
             >
               <X size={16} />
@@ -66,8 +66,8 @@ export default function DeleteConfirm({ isOpen, onClose, onConfirm, note, loadin
                 onClick={onClose}
                 className="flex-1 min-h-11 rounded-xl px-4 py-2.5 text-sm font-medium
                   text-surface-600 dark:text-surface-400
-                  bg-surface-100 dark:bg-[rgba(168,85,247,0.06)]
-                  hover:bg-surface-200 dark:hover:bg-[rgba(168,85,247,0.12)]
+                  bg-surface-100 dark:bg-surface-800
+                  hover:bg-surface-200 dark:hover:bg-surface-700
                   transition-colors duration-150 cursor-pointer"
               >
                 Cancel

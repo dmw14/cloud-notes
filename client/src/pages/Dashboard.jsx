@@ -151,10 +151,10 @@ export default function Dashboard() {
       {/* Header */}
       <div className="flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4 mb-8">
         <div>
-          <h1 className="text-2xl font-bold text-gradient-purple">
+          <h1 className="text-xl font-semibold text-surface-900 dark:text-surface-100">
             My Vault
           </h1>
-          <p className="text-sm text-surface-500 dark:text-purple-300/60 mt-0.5">
+          <p className="text-sm text-surface-500 mt-0.5">
             {notes.length} {notes.length === 1 ? 'item' : 'items'} total
             {searchQuery && ` · ${filteredNotes.length} matching`}
           </p>
@@ -165,9 +165,9 @@ export default function Dashboard() {
           <button
             id="create-note"
             onClick={openCreate}
-            className="btn-purple-glow flex min-h-11 items-center gap-2 rounded-xl px-5 py-2.5 text-sm font-semibold text-white
-              transform hover:-translate-y-0.5
-              transition-all duration-200 cursor-pointer whitespace-nowrap flex-shrink-0"
+            className="flex h-10 items-center gap-2 rounded-lg px-4 text-sm font-medium text-white
+              bg-primary-600 hover:bg-primary-700
+              transition-colors duration-150 cursor-pointer whitespace-nowrap flex-shrink-0"
           >
             <Plus size={16} />
             New Item
@@ -186,7 +186,7 @@ export default function Dashboard() {
           animate={{ opacity: 1 }}
           className="text-center py-16"
         >
-          <p className="text-surface-500 dark:text-purple-300/50 text-lg font-medium mb-1">
+          <p className="text-surface-500 text-base font-medium mb-1">
             No items found
           </p>
           <p className="text-surface-400 dark:text-surface-500 text-sm">

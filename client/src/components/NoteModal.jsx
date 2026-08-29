@@ -146,13 +146,13 @@ export default function NoteModal({ isOpen, onClose, onSave, note, loading, uplo
             exit={{ opacity: 0, scale: 0.95, y: 20 }}
             transition={{ type: 'spring', damping: 25, stiffness: 300 }}
             className="relative w-full max-w-2xl max-h-[85vh] overflow-hidden rounded-2xl
-              bg-white dark:bg-[rgba(15,15,18,0.9)]
-              border border-surface-200 dark:border-[rgba(168,85,247,0.15)]
-              shadow-2xl dark:shadow-purple-500/5 dark:ring-1 dark:ring-purple-500/5"
+              bg-white dark:bg-surface-900
+              border border-surface-200 dark:border-surface-700
+              shadow-xl dark:shadow-black/30"
           >
             {/* Header */}
             <div className="flex items-center justify-between px-6 py-4
-              border-b border-surface-100 dark:border-[rgba(168,85,247,0.1)]">
+              border-b border-surface-100 dark:border-surface-800">
               <h2 className="text-lg font-semibold text-surface-900 dark:text-surface-100">
                 {isEdit ? 'Edit Item' : 'Create Item'}
               </h2>
@@ -162,7 +162,7 @@ export default function NoteModal({ isOpen, onClose, onSave, note, loading, uplo
                   className={`flex items-center gap-1.5 px-3 py-1.5 rounded-lg text-xs font-medium
                     transition-colors duration-150 cursor-pointer
                     ${showPreview
-                      ? 'bg-purple-100 text-purple-700 dark:bg-[rgba(168,85,247,0.15)] dark:text-purple-300'
+                      ? 'bg-primary-100 text-primary-700 dark:bg-primary-500/15 dark:text-primary-300'
                       : 'text-surface-500 hover:bg-surface-100 dark:hover:bg-surface-800 dark:hover:text-purple-300'
                     }`}
                 >
@@ -172,7 +172,7 @@ export default function NoteModal({ isOpen, onClose, onSave, note, loading, uplo
                 <button
                   onClick={onClose}
                   className="p-1.5 rounded-lg text-surface-400 hover:text-surface-600
-                    hover:bg-surface-100 dark:hover:bg-[rgba(168,85,247,0.1)] dark:hover:text-surface-300
+                    hover:bg-surface-100 dark:hover:bg-surface-800 dark:hover:text-surface-300
                     transition-colors duration-150 cursor-pointer"
                 >
                   <X size={18} />
@@ -202,7 +202,7 @@ export default function NoteModal({ isOpen, onClose, onSave, note, loading, uplo
 
               {/* Content */}
               {showPreview ? (
-                <div className="markdown-body min-h-[200px] text-surface-700 dark:text-surface-300 rounded-lg p-4 dark:bg-[rgba(15,15,18,0.6)] border border-transparent dark:border-[rgba(168,85,247,0.1)]">
+                <div className="markdown-body min-h-[200px] text-surface-700 dark:text-surface-300 rounded-lg p-4 dark:bg-surface-800/50 border border-transparent dark:border-surface-700">
                   <ReactMarkdown remarkPlugins={[remarkGfm]}>
                     {content || '*Nothing to preview*'}
                   </ReactMarkdown>
@@ -236,15 +236,15 @@ export default function NoteModal({ isOpen, onClose, onSave, note, loading, uplo
 
               {/* ── Existing Files (edit mode) ── */}
               {isEdit && existingFiles.length > 0 && (
-                <div className="mt-5 pt-4 border-t border-surface-100 dark:border-[rgba(168,85,247,0.1)]">
+                <div className="mt-5 pt-4 border-t border-surface-100 dark:border-surface-800">
                   <p className="text-xs font-semibold text-surface-500 dark:text-surface-400 uppercase tracking-wider mb-3">
                     Attached Files
                   </p>
                   <div className="grid grid-cols-2 sm:grid-cols-3 gap-3">
                     {existingFiles.map((file, i) => (
                       <div key={file.public_id || i}
-                        className="rounded-xl overflow-hidden border border-surface-200 dark:border-[rgba(168,85,247,0.1)]
-                          bg-surface-50 dark:bg-[rgba(168,85,247,0.04)]">
+                        className="rounded-xl overflow-hidden border border-surface-200 dark:border-surface-700
+                          bg-surface-50 dark:bg-surface-800/50">
                         {isImageFile(file) ? (
                           <a href={file.url} target="_blank" rel="noopener noreferrer">
                             <img src={file.url} alt="attachment"
@@ -267,7 +267,7 @@ export default function NoteModal({ isOpen, onClose, onSave, note, loading, uplo
 
               {/* ── File Upload Zone (create mode only) ── */}
               {!isEdit && (
-                <div className="mt-5 pt-4 border-t border-surface-100 dark:border-[rgba(168,85,247,0.1)]">
+                <div className="mt-5 pt-4 border-t border-surface-100 dark:border-surface-800">
                   <p className="text-xs font-semibold text-surface-500 dark:text-surface-400 uppercase tracking-wider mb-3 flex items-center gap-1.5">
                     <Paperclip size={12} />
                     Attachments <span className="font-normal normal-case">({files.length}/5)</span>
@@ -292,7 +292,7 @@ export default function NoteModal({ isOpen, onClose, onSave, note, loading, uplo
                       className="hidden"
                     />
                     <div className="flex flex-col items-center gap-2 py-2">
-                      <div className="w-10 h-10 rounded-xl bg-purple-100 dark:bg-purple-500/15
+                      <div className="w-10 h-10 rounded-xl bg-purple-100 dark:bg-primary-500/10
                         flex items-center justify-center">
                         <Upload size={20} className="text-purple-500" />
                       </div>
@@ -313,8 +313,8 @@ export default function NoteModal({ isOpen, onClose, onSave, note, loading, uplo
                       {files.map((file, i) => (
                         <div key={`${file.name}-${i}`}
                           className="flex items-center gap-3 p-2.5 rounded-xl
-                            bg-surface-50 dark:bg-[rgba(168,85,247,0.04)]
-                            border border-surface-200 dark:border-[rgba(168,85,247,0.1)]
+                            bg-surface-50 dark:bg-surface-800/50
+                            border border-surface-200 dark:border-surface-700
                             group">
                           {/* Thumbnail / Icon */}
                           {isImageFile(file) ? (
@@ -380,12 +380,12 @@ export default function NoteModal({ isOpen, onClose, onSave, note, loading, uplo
 
             {/* Footer */}
             <div className="flex items-center justify-end gap-3 px-6 py-4
-              border-t border-surface-100 dark:border-[rgba(168,85,247,0.1)]">
+              border-t border-surface-100 dark:border-surface-800">
               <button
                 onClick={onClose}
                 className="min-h-11 rounded-xl px-4 py-2 text-sm font-medium
                   text-surface-600 dark:text-surface-400
-                  hover:bg-surface-100 dark:hover:bg-[rgba(168,85,247,0.08)]
+                  hover:bg-surface-100 dark:hover:bg-surface-800
                   transition-colors duration-150 cursor-pointer"
               >
                 Cancel
@@ -394,8 +394,8 @@ export default function NoteModal({ isOpen, onClose, onSave, note, loading, uplo
                 id="save-note"
                 onClick={handleSubmit}
                 disabled={loading}
-                className="btn-purple-glow min-h-11 rounded-xl px-5 py-2 text-sm font-semibold text-white
-                  shadow-md shadow-purple-500/25
+                className="min-h-11 rounded-lg px-5 py-2 text-sm font-semibold text-white
+                  bg-primary-600 hover:bg-primary-700
                   disabled:opacity-50 disabled:cursor-not-allowed
                   transition-all duration-200 cursor-pointer
                   flex items-center gap-2"

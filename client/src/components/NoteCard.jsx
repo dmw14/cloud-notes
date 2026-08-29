@@ -47,26 +47,21 @@ export default function NoteCard({ note, index, onEdit, onShare, onDelete }) {
       animate={{ opacity: 1, y: 0 }}
       exit={{ opacity: 0, y: -10, scale: 0.95 }}
       transition={{ duration: 0.3, delay: index * 0.05 }}
-      className="group relative rounded-2xl p-5 border cursor-pointer
-        bg-white dark:bg-[rgba(15,15,18,0.5)]
-        border-surface-200 dark:border-[rgba(168,85,247,0.1)]
-        hover:border-primary-300 dark:hover:border-[rgba(168,85,247,0.25)]
-        hover:shadow-lg hover:shadow-primary-500/5 dark:hover:shadow-[0_0_30px_rgba(168,85,247,0.08)]
-        transform hover:-translate-y-1
-        transition-all duration-300"
+      className="group relative rounded-xl p-5 border cursor-pointer
+        bg-white dark:bg-surface-900
+        border-surface-200 dark:border-surface-800
+        hover:border-surface-300 dark:hover:border-surface-700
+        hover:shadow-md
+        transition-all duration-200"
       onClick={() => onEdit(note)}
     >
-      {/* Subtle gradient accent on hover */}
-      <div className="absolute inset-0 rounded-2xl opacity-0 group-hover:opacity-100
-        bg-gradient-to-br from-primary-500/[0.02] to-transparent
-        dark:from-purple-500/[0.06] dark:to-transparent
-        transition-opacity duration-300 pointer-events-none" />
+
 
       {/* Public badge */}
       {note.isPublic && (
         <div className="absolute top-3 right-12">
           <span className="inline-flex items-center gap-1 px-2 py-0.5 rounded-full text-[11px] font-semibold
-            bg-emerald-100 text-emerald-700 dark:bg-emerald-500/15 dark:text-emerald-400">
+            bg-emerald-100 text-emerald-700 dark:bg-emerald-500/10 dark:text-emerald-400">
             <span className="w-1.5 h-1.5 rounded-full bg-emerald-500 animate-pulse" />
             Shared
           </span>
@@ -96,10 +91,10 @@ export default function NoteCard({ note, index, onEdit, onShare, onDelete }) {
               animate={{ opacity: 1, scale: 1, y: 0 }}
               exit={{ opacity: 0, scale: 0.9, y: -4 }}
               transition={{ duration: 0.15 }}
-              className="absolute right-0 top-full mt-1 w-44 py-1.5 rounded-xl
-                bg-white dark:bg-[rgba(15,15,18,0.9)]
-                border border-surface-200 dark:border-[rgba(168,85,247,0.15)]
-                shadow-xl shadow-purple-500/5 dark:shadow-purple-500/10
+              className="absolute right-0 top-full mt-1 w-44 py-1.5 rounded-lg
+                bg-white dark:bg-surface-900
+                border border-surface-200 dark:border-surface-700
+                shadow-lg shadow-black/8 dark:shadow-black/30
                 z-50"
             >
               <button
@@ -108,7 +103,7 @@ export default function NoteCard({ note, index, onEdit, onShare, onDelete }) {
                 className="w-full flex items-center gap-3 px-4 py-2.5 text-sm font-medium
                   text-surface-700 dark:text-surface-200
                   hover:bg-primary-50 hover:text-primary-600
-                  dark:hover:bg-purple-500/15 dark:hover:text-purple-400
+                  dark:hover:bg-surface-800 dark:hover:text-surface-200
                   transition-colors duration-150 cursor-pointer"
               >
                 <Edit3 size={18} />
@@ -120,7 +115,7 @@ export default function NoteCard({ note, index, onEdit, onShare, onDelete }) {
                 className="w-full flex items-center gap-3 px-4 py-2.5 text-sm font-medium
                   text-surface-700 dark:text-surface-200
                   hover:bg-purple-50 hover:text-purple-600
-                  dark:hover:bg-purple-500/15 dark:hover:text-purple-400
+                  dark:hover:bg-surface-800 dark:hover:text-surface-200
                   transition-colors duration-150 cursor-pointer"
               >
                 <Share2 size={18} />
@@ -132,7 +127,7 @@ export default function NoteCard({ note, index, onEdit, onShare, onDelete }) {
                 onClick={() => { onDelete(note); setMenuOpen(false); }}
                 className="w-full flex items-center gap-3 px-4 py-2.5 text-sm font-medium
                   text-red-500 dark:text-red-400
-                  hover:bg-red-50 dark:hover:bg-red-500/15
+                  hover:bg-red-50 dark:hover:bg-red-500/10
                   transition-colors duration-150 cursor-pointer"
               >
                 <Trash2 size={18} />
@@ -184,7 +179,7 @@ export default function NoteCard({ note, index, onEdit, onShare, onDelete }) {
 
       {/* Footer */}
       <div className="flex items-center justify-between pt-3 border-t
-        border-surface-100 dark:border-[rgba(168,85,247,0.08)]">
+        border-surface-100 dark:border-surface-800">
         <div className="flex items-center gap-3">
           <div className="flex items-center gap-1.5 text-xs text-surface-400 dark:text-surface-500">
             <Calendar size={12} />

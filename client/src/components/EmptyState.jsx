@@ -1,46 +1,32 @@
 import { motion } from 'framer-motion';
-import { FileText } from 'lucide-react';
+import { FolderOpen } from 'lucide-react';
 
 export default function EmptyState({ onCreateNote }) {
   return (
     <motion.div
-      initial={{ opacity: 0, y: 20 }}
+      initial={{ opacity: 0, y: 12 }}
       animate={{ opacity: 1, y: 0 }}
-      transition={{ duration: 0.5 }}
-      className="flex flex-col items-center justify-center py-20 px-6"
+      transition={{ duration: 0.4 }}
+      className="flex flex-col items-center justify-center py-24 px-6"
     >
-      {/* Illustration */}
-      <div className="relative mb-8">
-        <div 
-          className="w-28 h-28 rounded-3xl bg-gradient-to-br from-primary-500/20 to-primary-600/10
-            dark:from-purple-500/15 dark:to-fuchsia-600/5
-            flex items-center justify-center"
-          style={{ animation: 'float 6s ease-in-out infinite' }}
-        >
-          <FileText size={48} className="text-purple-400" />
-        </div>
-        <div className="absolute -top-2 -right-2 w-8 h-8 rounded-xl
-          bg-gradient-to-br from-purple-400 to-purple-600 opacity-40 blur-sm" />
-        <div className="absolute -bottom-1 -left-3 w-6 h-6 rounded-lg
-          bg-gradient-to-br from-purple-400 to-purple-600 opacity-40 blur-sm" />
+      <div className="w-16 h-16 rounded-2xl bg-surface-100 dark:bg-surface-800
+        flex items-center justify-center mb-6">
+        <FolderOpen size={28} className="text-surface-400" />
       </div>
 
-      <h2 className="text-2xl font-bold text-surface-900 dark:text-white mb-2">
+      <h2 className="text-xl font-semibold text-surface-900 dark:text-surface-100 mb-2">
         Your vault is empty
       </h2>
-      <p className="text-surface-500 dark:text-surface-400 text-center max-w-sm mb-8 leading-relaxed">
+      <p className="text-surface-500 text-center max-w-sm mb-8 text-sm leading-relaxed">
         Start capturing your ideas, notes, photos, and files. Your first item is just a click away.
       </p>
 
       <button
         id="empty-state-create"
         onClick={onCreateNote}
-        className="min-h-11 rounded-xl px-6 py-3 text-sm font-semibold text-white
-          bg-gradient-to-r from-primary-500 to-primary-600
-          hover:from-primary-600 hover:to-primary-700
-          shadow-lg shadow-primary-500/25 hover:shadow-primary-500/40
-          transform hover:-translate-y-0.5
-          transition-all duration-200 cursor-pointer"
+        className="h-10 rounded-lg px-5 text-sm font-medium text-white
+          bg-primary-600 hover:bg-primary-700
+          transition-colors duration-150 cursor-pointer"
       >
         Create your first item
       </button>
